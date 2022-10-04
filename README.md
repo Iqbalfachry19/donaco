@@ -1,1 +1,2 @@
-# ini adalah projek nextjs untuk rekayasa web
+# Donaco
+donaco adalah aplikasi berbasis website untuk berdonasi
