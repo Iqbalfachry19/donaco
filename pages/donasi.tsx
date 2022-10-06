@@ -12,7 +12,6 @@ const donasi = (props: Props) => {
         <meta name="description" content="donaco is web for donating" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
     </div>
   );
 };

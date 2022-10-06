@@ -13,7 +13,7 @@ const Header = (props: Props) => {
         </div>
         <h1 className="">Donaco</h1>
       </div>
-      <nav className="flex space-x-2 ">
+      <nav className="lg:flex space-x-2 hidden">
         <Link href="/">
           <a>Home</a>
         </Link>

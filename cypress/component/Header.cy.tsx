@@ -1,5 +1,5 @@
 import Header from '../../components/Header';
-import '../../styles/globals.css';
+
 describe('Header.cy.ts', () => {
   it('Header should have title "Donaco"', () => {
     // cy.mount()
