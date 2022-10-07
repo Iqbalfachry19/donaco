@@ -1,1 +1,312 @@
-{}
+{
+  "E:\\code\\next\\donaco\\components\\Hero.tsx": {
+    "path": "E:\\code\\next\\donaco\\components\\Hero.tsx",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 8,
+          "column": 13
+        },
+        "end": {
+          "line": 26,
+          "column": 1
+        }
+      },
+      "1": {
+        "start": {
+          "line": 9,
+          "column": 2
+        },
+        "end": {
+          "line": 25,
+          "column": 4
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 8,
+            "column": 13
+          },
+          "end": {
+            "line": 8,
+            "column": 14
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 35
+          },
+          "end": {
+            "line": 26,
+            "column": 1
+          }
+        },
+        "line": 8
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 2,
+      "1": 4
+    },
+    "f": {
+      "0": 4
+    },
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "d1e9ff0a4f680fa9e5ee29f9c2903771f69fb351"
+  },
+  "E:\\code\\next\\donaco\\pages\\index.tsx": {
+    "path": "E:\\code\\next\\donaco\\pages\\index.tsx",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 5,
+          "column": 13
+        },
+        "end": {
+          "line": 19,
+          "column": 1
+        }
+      },
+      "1": {
+        "start": {
+          "line": 6,
+          "column": 2
+        },
+        "end": {
+          "line": 18,
+          "column": 4
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 5,
+            "column": 13
+          },
+          "end": {
+            "line": 5,
+            "column": 14
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 19
+          },
+          "end": {
+            "line": 19,
+            "column": 1
+          }
+        },
+        "line": 5
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 1,
+      "1": 2
+    },
+    "f": {
+      "0": 2
+    },
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "bc9a902b55b00f67fe3e5014acd68f8135cb7a5f"
+  },
+  "E:\\code\\next\\donaco\\components\\Profile.tsx": {
+    "path": "E:\\code\\next\\donaco\\components\\Profile.tsx",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 9,
+          "column": 16
+        },
+        "end": {
+          "line": 19,
+          "column": 1
+        }
+      },
+      "1": {
+        "start": {
+          "line": 10,
+          "column": 2
+        },
+        "end": {
+          "line": 18,
+          "column": 4
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 9,
+            "column": 16
+          },
+          "end": {
+            "line": 9,
+            "column": 17
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 9,
+            "column": 49
+          },
+          "end": {
+            "line": 19,
+            "column": 1
+          }
+        },
+        "line": 9
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 1,
+      "1": 0
+    },
+    "f": {
+      "0": 0
+    },
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "67d6b5446685bf28a00ca625e6c275f912a0dd3b"
+  },
+  "E:\\code\\next\\donaco\\components\\Team.tsx": {
+    "path": "E:\\code\\next\\donaco\\components\\Team.tsx",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 6,
+          "column": 13
+        },
+        "end": {
+          "line": 21,
+          "column": 1
+        }
+      },
+      "1": {
+        "start": {
+          "line": 7,
+          "column": 2
+        },
+        "end": {
+          "line": 20,
+          "column": 4
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 6,
+            "column": 13
+          },
+          "end": {
+            "line": 6,
+            "column": 14
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 6,
+            "column": 31
+          },
+          "end": {
+            "line": 21,
+            "column": 1
+          }
+        },
+        "line": 6
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 1,
+      "1": 0
+    },
+    "f": {
+      "0": 0
+    },
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "c76221bf17b438e32b58880d7302deac656ab4aa"
+  },
+  "E:\\code\\next\\donaco\\pages\\about.tsx": {
+    "path": "E:\\code\\next\\donaco\\pages\\about.tsx",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 9,
+          "column": 14
+        },
+        "end": {
+          "line": 22,
+          "column": 1
+        }
+      },
+      "1": {
+        "start": {
+          "line": 10,
+          "column": 2
+        },
+        "end": {
+          "line": 21,
+          "column": 4
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 9,
+            "column": 14
+          },
+          "end": {
+            "line": 9,
+            "column": 15
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 9,
+            "column": 32
+          },
+          "end": {
+            "line": 22,
+            "column": 1
+          }
+        },
+        "line": 9
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 1,
+      "1": 0
+    },
+    "f": {
+      "0": 0
+    },
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "afed70455fb6ef6a4e5d44d32454a15bd8e665cb"
+  }
+}
