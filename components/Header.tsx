@@ -1,3 +1,4 @@
+import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -5,6 +6,7 @@ import React from 'react';
 type Props = {};
 
 const Header = (props: Props) => {
+  const { data } = useSession();
   return (
     <header className="bg-[#00aeef] flex items-center text-white justify-between">
       <div className="flex items-center px-2 py-2 space-x-2">
@@ -26,11 +28,26 @@ const Header = (props: Props) => {
         </Link>
       </nav>
       <div className="flex space-x-2 px-2 items-center">
-        <p>Inbox</p>
-        <p>Log In</p>
-        <button className="bg-white py-2 px-2 rounded-xl text-black">
-          Sign Up
-        </button>
+        <p className="cursor-pointer">Inbox</p>
+        {data ? (
+          <p
+            onClick={() => signOut({ callbackUrl: '/' })}
+            className="cursor-pointer"
+          >
+            Log Out
+          </p>
+        ) : (
+          <>
+            <Link href="/log-in">
+              <p className="cursor-pointer">Log In</p>
+            </Link>
+            <Link href="/sign-up">
+              <button className="bg-white py-2 px-2 rounded-xl text-black">
+                Sign Up
+              </button>
+            </Link>
+          </>
+        )}
       </div>
     </header>
   );
