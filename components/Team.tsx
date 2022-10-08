@@ -7,7 +7,7 @@ const Team = (props: Props) => {
   return (
     <div className="max-w-4xl mx-auto">
       <h1 className="text-center text-4xl">Team</h1>
-      <div className="flex flex-col lg:flex-row  items-center  justify-center lg:justify-between mb-20">
+      <div className="flex flex-col lg:flex-row  items-center  justify-center lg:justify-between mb-40">
         <Profile
           name="Iqbal"
           job="programmer"
