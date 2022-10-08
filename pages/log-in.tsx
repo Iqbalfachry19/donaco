@@ -7,9 +7,13 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { loginSchema, ILogin } from '../common/validation/auth';
-
+import { ErrorMessage } from '@hookform/error-message';
 const LogIn: NextPage = () => {
-  const { register, handleSubmit } = useForm<ILogin>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ILogin>({
     resolver: zodResolver(loginSchema),
   });
 
@@ -39,11 +43,21 @@ const LogIn: NextPage = () => {
                 className="input input-bordered w-full max-w-xs mt-2"
                 {...register('email')}
               />
+              <ErrorMessage
+                errors={errors}
+                name="email"
+                render={({ message }) => <p>{message}</p>}
+              />
               <input
                 type="password"
                 placeholder="Type your password..."
                 className="input input-bordered w-full max-w-xs my-2"
                 {...register('password')}
+              />
+              <ErrorMessage
+                errors={errors}
+                name="password"
+                render={({ message }) => <p>{message}</p>}
               />
               <div className="card-actions items-center justify-between">
                 <Link href="/sign-up" className="link">

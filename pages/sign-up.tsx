@@ -8,10 +8,15 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 import { signUpSchema, ISignUp } from '../common/validation/auth';
 import { trpc } from '../common/client/trpc';
+import { ErrorMessage } from '@hookform/error-message';
 
 const SignUp: NextPage = () => {
   const router = useRouter();
-  const { register, handleSubmit } = useForm<ISignUp>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ISignUp>({
     resolver: zodResolver(signUpSchema),
   });
 
@@ -50,11 +55,21 @@ const SignUp: NextPage = () => {
                 className="input input-bordered w-full max-w-xs my-2"
                 {...register('username')}
               />
+              <ErrorMessage
+                errors={errors}
+                name="username"
+                render={({ message }) => <p>{message}</p>}
+              />
               <input
                 type="email"
                 placeholder="Type your email..."
                 className="input input-bordered w-full max-w-xs"
                 {...register('email')}
+              />
+              <ErrorMessage
+                errors={errors}
+                name="email"
+                render={({ message }) => <p>{message}</p>}
               />
               <input
                 type="password"
@@ -62,12 +77,23 @@ const SignUp: NextPage = () => {
                 className="input input-bordered w-full max-w-xs my-2"
                 {...register('password')}
               />
+              <ErrorMessage
+                errors={errors}
+                name="password"
+                render={({ message }) => <p>{message}</p>}
+              />
               <input
                 type="password"
                 placeholder="Type your confirmation password..."
                 className="input input-bordered w-full max-w-xs my-2"
                 {...register('confirmPassword')}
               />
+              <ErrorMessage
+                errors={errors}
+                name="confirmPassword"
+                render={({ message }) => <p>{message}</p>}
+              />
+
               <div className="card-actions items-center justify-between">
                 <Link href="/log-in" className="link">
                   Go to login

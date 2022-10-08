@@ -16,6 +16,7 @@
   "dependencies": {
     "@cypress/code-coverage": "^3.10.0",
     "@heroicons/react": "^2.0.12",
+    "@hookform/error-message": "^2.0.0",
     "@hookform/resolvers": "^2.9.8",
     "@prisma/client": "^4.4.0",
     "@trpc/client": "^9.27.4",

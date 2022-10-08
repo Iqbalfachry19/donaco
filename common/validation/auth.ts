@@ -13,6 +13,7 @@ export const signUpSchema = loginSchema
   .superRefine(({ confirmPassword, password }, ctx) => {
     if (confirmPassword !== password)
       ctx.addIssue({
+        path: ['confirmPassword'],
         code: 'custom',
         message: 'The passwords did not match',
       });
