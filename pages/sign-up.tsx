@@ -66,7 +66,7 @@ const SignUp: NextPage = () => {
                 type="password"
                 placeholder="Type your confirmation password..."
                 className="input input-bordered w-full max-w-xs my-2"
-                {...register('password')}
+                {...register('confirmPassword')}
               />
               <div className="card-actions items-center justify-between">
                 <Link href="/log-in" className="link">
