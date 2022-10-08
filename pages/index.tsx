@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import ButtonDonasi from '../components/ButtonDonasi';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 
@@ -13,6 +14,7 @@ const Home = () => {
 
       <main>
         <Hero />
+        <ButtonDonasi />
       </main>
     </div>
   );
