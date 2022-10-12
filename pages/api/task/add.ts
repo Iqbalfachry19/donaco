@@ -13,7 +13,7 @@ export type ErrorResponse = {
   error: string;
 };
 
-export default async function (
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ): Promise<void> {
