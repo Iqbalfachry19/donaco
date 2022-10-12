@@ -2,11 +2,22 @@ import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import {
+  NovuProvider,
+  PopoverNotificationCenter,
+  NotificationBell,
+  IMessage,
+} from '@novu/notification-center';
+import { useRouter } from 'next/router';
 
 type Props = {};
 
 const Header = (props: Props) => {
   const { data } = useSession();
+  const router = useRouter();
+  function onNotificationClick(notification: IMessage) {
+    router.push(notification.cta.data.url);
+  }
   return (
     <header className="bg-[#00aeef] flex items-center text-white justify-between">
       <div className="flex items-center px-2 py-2 space-x-2">
@@ -28,7 +39,19 @@ const Header = (props: Props) => {
         </Link>
       </nav>
       <div className="flex space-x-2 px-2 items-center">
-        <p className="cursor-pointer">Inbox</p>
+        <NovuProvider
+          subscriberId={'63395cf0ee1316a5c8b25873'}
+          applicationIdentifier={'Kb-zKM23Fwbf'}
+        >
+          <PopoverNotificationCenter
+            colorScheme="light"
+            onNotificationClick={onNotificationClick}
+          >
+            {({ unseenCount }) => (
+              <NotificationBell unseenCount={unseenCount} />
+            )}
+          </PopoverNotificationCenter>
+        </NovuProvider>
         {data ? (
           <p
             onClick={() => signOut({ callbackUrl: '/' })}
