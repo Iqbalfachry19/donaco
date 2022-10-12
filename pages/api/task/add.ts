@@ -33,7 +33,7 @@ export default async function (
 
     await qstash.publishJSON({
       url: `https://${process.env.VERCEL_URL}/api/task/process`,
-      retries: 3,
+      retries: 1,
       body: {
         userId,
         x,

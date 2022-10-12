@@ -47,17 +47,6 @@ const Header = (props: Props) => {
         </Link>
       </nav>
       <div className="flex space-x-2 px-2 items-center">
-        <p
-          onClick={() =>
-            createTask({
-              userId: '63395cf0ee1316a5c8b25873',
-              x: 2,
-              y: 4,
-            })
-          }
-        >
-          2 + 4
-        </p>
         <NovuProvider
           subscriberId={'63395cf0ee1316a5c8b25873'}
           applicationIdentifier={'Kb-zKM23Fwbf'}
