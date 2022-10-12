@@ -15,9 +15,7 @@ type Props = {};
 const Header = (props: Props) => {
   const { data } = useSession();
   const router = useRouter();
-  function onNotificationClick(notification: IMessage) {
-    router.push(notification.cta.data.url);
-  }
+  function onNotificationClick(notification: IMessage) {}
   return (
     <header className="bg-[#00aeef] flex items-center text-white justify-between">
       <div className="flex items-center px-2 py-2 space-x-2">
