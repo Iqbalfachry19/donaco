@@ -1,11 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { DefaultSession } from 'next-auth';
 import { getUser } from './[...nextauth]';
-type Data = {
-  address: string;
-};
 
-const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   // Get the authenticated user from the request
   const user = await getUser(req, res);
 
