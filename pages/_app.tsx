@@ -5,7 +5,7 @@ import { Session } from 'next-auth';
 import { withTRPC } from '@trpc/next';
 import { SessionProvider } from 'next-auth/react';
 import { ServerRouter } from '../server/router';
-
+import { ThirdwebProvider } from '@thirdweb-dev/react';
 const App = ({
   Component,
   pageProps,
@@ -14,9 +14,11 @@ const App = ({
 }>) => {
   return (
     <SessionProvider session={pageProps.session}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <ThirdwebProvider desiredChainId={80001}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ThirdwebProvider>
     </SessionProvider>
   );
 };

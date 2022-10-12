@@ -5,10 +5,23 @@ import { useCallback } from 'react';
 import { signIn } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-
+import { useSDK, useAddress, useMetamask } from '@thirdweb-dev/react';
 import { loginSchema, ILogin } from '../common/validation/auth';
 import { ErrorMessage } from '@hookform/error-message';
 const LogIn: NextPage = () => {
+  const sdk = useSDK();
+  const address = useAddress();
+  const connect = useMetamask();
+  const loginWithWallet = async () => {
+    // Set this to your domain to prevent signature malleability attacks.
+    const domain = 'donaco.vercel.app';
+    const payload = await sdk?.auth.login(domain);
+    // And then we pass it into the next-auth signIn function
+    await signIn('credentials', {
+      payload: JSON.stringify(payload),
+      callbackUrl: '/dashboard',
+    });
+  };
   const {
     register,
     handleSubmit,
@@ -18,7 +31,7 @@ const LogIn: NextPage = () => {
   });
 
   const onSubmit = useCallback(async (data: ILogin) => {
-    await signIn('credentials', { ...data, callbackUrl: '/dashboard' });
+    await signIn('email-password', { ...data, callbackUrl: '/dashboard' });
   }, []);
 
   return (
@@ -66,6 +79,11 @@ const LogIn: NextPage = () => {
                 <button className="btn btn-secondary" type="submit">
                   Login
                 </button>
+                {address ? (
+                  <button onClick={loginWithWallet}>Login with Wallet</button>
+                ) : (
+                  <button onClick={connect}>Connect Wallet</button>
+                )}
               </div>
             </div>
           </div>
