@@ -11,7 +11,7 @@ const ButtonDonasi = (props: Props) => {
           Ayo donasi
         </button>
       </Link>
-      <Link href="/donasi">
+      <Link href="/about">
         <button className="bg-gray-500 text-white p-2 rounded-md">
           Tentang Kami
         </button>
