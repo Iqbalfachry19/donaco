@@ -2,11 +2,14 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Image from 'next/image';
 type Props = {};
-
+type Query = {
+  title: string;
+  imageUrl: string;
+};
 const DetailDonasi = (props: Props) => {
   const router = useRouter();
 
-  const { title, imageUrl } = router.query;
+  const { title, imageUrl } = router.query as Query;
   return (
     <div className="font-body">
       <Head>
