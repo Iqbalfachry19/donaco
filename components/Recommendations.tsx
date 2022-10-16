@@ -53,7 +53,7 @@ const Recommendations = (props: Props) => {
   };
   return (
     <div className="max-w-4xl mx-auto p-2 ">
-      <div className="px-40 ">
+      <div className="px-8 lg:px-40 ">
         <Slider {...settings} className=".slick-prev">
           {data.map((recommendation) => (
             <div
