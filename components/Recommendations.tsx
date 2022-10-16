@@ -10,11 +10,19 @@ const data = [
     id: '1',
     imageUrl: '/image/banjir.jpeg',
     title: 'Ribuan warga terdampak banjir di kalteng',
+    maxDonation: 200000000,
+    currentDonation: 61765500,
+    maxDay: 96,
+    donationAmount: 4210,
   },
   {
     id: '2',
     imageUrl: '/image/banjir.jpeg',
     title: 'Banjir di pekanbaru',
+    maxDonation: 200000000,
+    currentDonation: 61765500,
+    maxDay: 96,
+    donationAmount: 4210,
   },
 ];
 const dataJenis = [
@@ -57,6 +65,10 @@ const Recommendations = (props: Props) => {
                     query: {
                       imageUrl: recommendation.imageUrl,
                       title: recommendation.title,
+                      maxDonation: recommendation.maxDonation,
+                      currentDonation: recommendation.currentDonation,
+                      maxDay: recommendation.maxDay,
+                      donationAmount: recommendation.donationAmount,
                     },
                   },
                   `/donasi/${recommendation.id}`,
