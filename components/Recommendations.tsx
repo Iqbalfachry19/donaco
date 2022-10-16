@@ -4,6 +4,7 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import Link from 'next/link';
 type Props = {};
 const data = [
   {
@@ -56,31 +57,28 @@ const Recommendations = (props: Props) => {
       <div className="px-8 lg:px-40 ">
         <Slider {...settings} className=".slick-prev">
           {data.map((recommendation) => (
-            <div
+            <Link
               key={recommendation.id}
-              onClick={() =>
-                router.push(
-                  {
-                    pathname: `/donasi/${recommendation.id}`,
-                    query: {
-                      imageUrl: recommendation.imageUrl,
-                      title: recommendation.title,
-                      maxDonation: recommendation.maxDonation,
-                      currentDonation: recommendation.currentDonation,
-                      maxDay: recommendation.maxDay,
-                      donationAmount: recommendation.donationAmount,
-                    },
-                  },
-                  `/donasi/${recommendation.id}`,
-                )
-              }
-              className="cursor-pointer"
+              href={{
+                pathname: `/donasi/${recommendation.id}`,
+                query: {
+                  imageUrl: recommendation.imageUrl,
+                  title: recommendation.title,
+                  maxDonation: recommendation.maxDonation,
+                  currentDonation: recommendation.currentDonation,
+                  maxDay: recommendation.maxDay,
+                  donationAmount: recommendation.donationAmount,
+                },
+              }}
+              as={`/donasi/${recommendation.id}`}
             >
-              <p className="text-center">{recommendation.title}</p>
-              <div className="w-80 h-40 relative mx-auto rounded-md flex justify-center items-center ">
-                <Image src={recommendation.imageUrl} layout="fill" alt="" />
+              <div className="cursor-pointer">
+                <p className="text-center">{recommendation.title}</p>
+                <div className="w-80 h-40 relative mx-auto rounded-md flex justify-center items-center ">
+                  <Image src={recommendation.imageUrl} layout="fill" alt="" />
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </Slider>
       </div>

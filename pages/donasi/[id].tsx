@@ -4,7 +4,9 @@ import Image from 'next/image';
 const convertRupiah = require('rupiah-format');
 import ProgressBar from '../../components/ProgressBar';
 import { GetServerSideProps } from 'next';
-type Props = {
+type Props = {};
+
+type Query = {
   title: string;
   imageUrl: string;
   maxDonation: string;
@@ -12,24 +14,26 @@ type Props = {
   maxDay: string;
   donationAmount: string;
 };
+const DetailDonasi = (props: Props) => {
+  const router = useRouter();
 
-const DetailDonasi = ({
-  title,
-  imageUrl,
-  maxDonation,
-  currentDonation,
-  maxDay,
-  donationAmount,
-}: Props) => {
+  const {
+    title,
+    imageUrl,
+    maxDonation,
+    currentDonation,
+    maxDay,
+    donationAmount,
+  } = router.query as Query;
   return (
-    <div className="font-body bg-gray-100 h-[94vh]">
+    <div className="font-body bg-gray-100 h-full lg:h-[94vh]">
       <Head>
         <title>Donaco - {title}</title>
         <meta name="description" content="donaco is web for donating" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="max-w-7xl mx-auto p-2">
-        <div className="grid-cols-5 grid p-8">
+        <div className="lg:grid-cols-5 lg:grid p-8">
           <div className="flex flex-col col-span-2 cursor-pointer ">
             <div className="w-full h-80 relative rounded-md  overflow-hidden">
               <Image src={imageUrl} layout="fill" alt="" />
@@ -65,7 +69,7 @@ const DetailDonasi = ({
               Donasi Sekarang!
             </button>
           </div>
-          <div className="flex flex-col px-8 col-span-3">
+          <div className="flex flex-col px-8 col-span-3 pt-4 lg:pt-0">
             <div className="bg-white p-2">
               <h1 className="font-bold text-lg">Informasi Penggalangan Dana</h1>
               <div className="border p-2">
@@ -81,7 +85,7 @@ const DetailDonasi = ({
                 </div>
               </div>
             </div>
-            <div className="mt-10 bg-white p-2">
+            <div className="mt-10 bg-white p-2 mb-40">
               <h1 className="font-bold text-lg">Cerita</h1>
               <p>
                 Beberapa pekan terakhir hujan mengguyur sejumlah wilayah di
@@ -98,23 +102,3 @@ const DetailDonasi = ({
 };
 
 export default DetailDonasi;
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const {
-    title,
-    imageUrl,
-    maxDonation,
-    currentDonation,
-    maxDay,
-    donationAmount,
-  } = context.query;
-  return {
-    props: {
-      title,
-      imageUrl,
-      maxDonation,
-      currentDonation,
-      maxDay,
-      donationAmount,
-    },
-  };
-};
