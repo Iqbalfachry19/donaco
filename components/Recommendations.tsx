@@ -5,27 +5,9 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Link from 'next/link';
+import { data } from '../data/data';
 type Props = {};
-const data = [
-  {
-    id: '1',
-    imageUrl: '/image/banjir.jpeg',
-    title: 'Ribuan warga terdampak banjir di kalteng',
-    maxDonation: 200000000,
-    currentDonation: 61765500,
-    maxDay: 96,
-    donationAmount: 4210,
-  },
-  {
-    id: '2',
-    imageUrl: '/image/banjir.jpeg',
-    title: 'Banjir di pekanbaru',
-    maxDonation: 200000000,
-    currentDonation: 61765500,
-    maxDay: 96,
-    donationAmount: 4210,
-  },
-];
+
 const dataJenis = [
   {
     id: '1',
@@ -61,16 +43,8 @@ const Recommendations = (props: Props) => {
               key={recommendation.id}
               href={{
                 pathname: `/donasi/${recommendation.id}`,
-                query: {
-                  imageUrl: recommendation.imageUrl,
-                  title: recommendation.title,
-                  maxDonation: recommendation.maxDonation,
-                  currentDonation: recommendation.currentDonation,
-                  maxDay: recommendation.maxDay,
-                  donationAmount: recommendation.donationAmount,
-                },
               }}
-              as={`/donasi/${recommendation.id}`}
+              passHref={true}
             >
               <div className="cursor-pointer">
                 <p className="text-center">{recommendation.title}</p>

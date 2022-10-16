@@ -4,6 +4,7 @@ import Image from 'next/image';
 const convertRupiah = require('rupiah-format');
 import ProgressBar from '../../components/ProgressBar';
 import { GetServerSideProps } from 'next';
+import { data } from '../../data/data';
 type Props = {};
 
 type Query = {
@@ -24,7 +25,7 @@ const DetailDonasi = (props: Props) => {
     currentDonation,
     maxDay,
     donationAmount,
-  } = router.query as Query;
+  } = data.find((data) => data.id === router.query.id) as any;
   return (
     <div className="font-body bg-gray-100 h-full lg:h-[94vh]">
       <Head>
