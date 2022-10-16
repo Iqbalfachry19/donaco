@@ -3,8 +3,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 const convertRupiah = require('rupiah-format');
 import ProgressBar from '../../components/ProgressBar';
-type Props = {};
-type Query = {
+import { GetServerSideProps } from 'next';
+type Props = {
   title: string;
   imageUrl: string;
   maxDonation: string;
@@ -12,17 +12,15 @@ type Query = {
   maxDay: string;
   donationAmount: string;
 };
-const DetailDonasi = (props: Props) => {
-  const router = useRouter();
 
-  const {
-    title,
-    imageUrl,
-    maxDonation,
-    currentDonation,
-    maxDay,
-    donationAmount,
-  } = router.query as Query;
+const DetailDonasi = ({
+  title,
+  imageUrl,
+  maxDonation,
+  currentDonation,
+  maxDay,
+  donationAmount,
+}: Props) => {
   return (
     <div className="font-body bg-gray-100 h-[94vh]">
       <Head>
@@ -100,3 +98,23 @@ const DetailDonasi = (props: Props) => {
 };
 
 export default DetailDonasi;
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const {
+    title,
+    imageUrl,
+    maxDonation,
+    currentDonation,
+    maxDay,
+    donationAmount,
+  } = context.query;
+  return {
+    props: {
+      title,
+      imageUrl,
+      maxDonation,
+      currentDonation,
+      maxDay,
+      donationAmount,
+    },
+  };
+};
