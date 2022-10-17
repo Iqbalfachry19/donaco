@@ -12,16 +12,16 @@ const dataJenis = [
   {
     id: '1',
     imageUrl: '/image/banjir.jpeg',
-    title: 'Gempa Bumi',
+    title: 'Banjir',
   },
   {
     id: '2',
-    imageUrl: '/image/banjir.jpeg',
+    imageUrl: '/image/Angin.jpg',
     title: 'Angin topan',
   },
   {
     id: '2',
-    imageUrl: '/image/banjir.jpeg',
+    imageUrl: '/image/Longsor.jpg',
     title: 'Longsor',
   },
 ];
