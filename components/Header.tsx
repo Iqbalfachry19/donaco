@@ -18,6 +18,7 @@ const Header = (props: Props) => {
   function onNotificationClick(notification: IMessage) {
     router.push({ pathname: notification.cta.data?.url });
   }
+
   async function createTask(req: AddRequest): Promise<void> {
     const res = await fetch('/api/task/add', {
       method: 'POST',
@@ -29,7 +30,13 @@ const Header = (props: Props) => {
     console.log(res);
   }
   return (
-    <header className="bg-[#00aeef] flex items-center text-white justify-between">
+    <header
+      className={`${
+        router.pathname === '/log-in' || router.pathname === '/sign-up'
+          ? 'bg-transparent fixed top-0 left-0 right-0'
+          : 'bg-[#00aeef]'
+      } flex items-center text-white justify-between`}
+    >
       <div className="flex items-center px-2 py-2 space-x-2">
         <div className="w-8 h-8 relative">
           <Image src="/image/logo.png" layout="fill" alt="" />

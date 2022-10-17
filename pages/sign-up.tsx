@@ -34,7 +34,7 @@ const SignUp: NextPage = () => {
   );
 
   return (
-    <div>
+    <div className="bg-[url('/image/background.jpg')]">
       <Head>
         <title>Donaco - Register</title>
         <meta name="description" content="donaco is web for donating" />

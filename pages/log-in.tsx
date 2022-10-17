@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useSDK, useAddress, useMetamask } from '@thirdweb-dev/react';
 import { loginSchema, ILogin } from '../common/validation/auth';
 import { ErrorMessage } from '@hookform/error-message';
+import Image from 'next/image';
 const LogIn: NextPage = () => {
   const sdk = useSDK();
   const address = useAddress();
@@ -35,57 +36,81 @@ const LogIn: NextPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="bg-[url('/image/background.jpg')]">
       <Head>
         <title>Donaco - Login</title>
         <meta name="description" content="donaco is web for donating" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className="flex text-white">
         <form
           className="flex items-center justify-center h-screen w-full"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="w-100 ">
             <div className="card-body">
-              <h2 className="card-title">Welcome back!</h2>
-              <input
-                type="email"
-                placeholder="Type your email..."
-                className="input input-bordered w-full max-w-xs mt-2"
-                {...register('email')}
-              />
-              <ErrorMessage
-                errors={errors}
-                name="email"
-                render={({ message }) => <p>{message}</p>}
-              />
-              <input
-                type="password"
-                placeholder="Type your password..."
-                className="input input-bordered w-full max-w-xs my-2"
-                {...register('password')}
-              />
-              <ErrorMessage
-                errors={errors}
-                name="password"
-                render={({ message }) => <p>{message}</p>}
-              />
-              <div className="card-actions items-center justify-between">
-                <Link href="/sign-up" className="link">
-                  Go to sign up
-                </Link>
-                <button className="btn btn-secondary" type="submit">
+              <h1 className="text-4xl">Website Donasi Donaco</h1>
+              <h2 className="text-white text-lg">
+                Selamat datang di layanan donasi Donaco
+              </h2>
+              <div className="flex space-x-2">
+                <div>
+                  <label>Email</label>
+                  <input
+                    type="email"
+                    placeholder="Type your email..."
+                    className="input input-bordered w-full max-w-xs mt-2"
+                    {...register('email')}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="email"
+                    render={({ message }) => <p>{message}</p>}
+                  />
+                </div>
+                <div>
+                  <label>Password</label>
+                  <input
+                    type="password"
+                    placeholder="Type your password..."
+                    className="input input-bordered w-full max-w-xs my-2"
+                    {...register('password')}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="password"
+                    render={({ message }) => <p>{message}</p>}
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col space-y-2">
+                <button
+                  className="border border-white p-2 text-white rounded-lg"
+                  type="submit"
+                >
                   Login
                 </button>
                 {address ? (
-                  <button onClick={loginWithWallet}>Login with Wallet</button>
+                  <button
+                    className="border border-white p-2 text-white rounded-lg"
+                    onClick={loginWithWallet}
+                  >
+                    Login with Wallet
+                  </button>
                 ) : (
-                  <button onClick={connect}>Connect Wallet</button>
+                  <button
+                    className="border border-white p-2 text-white rounded-lg"
+                    onClick={connect}
+                  >
+                    Connect Wallet
+                  </button>
                 )}
               </div>
             </div>
+          </div>
+          <div className="w-[30rem] h-[30rem] relative  rounded-md ">
+            <Image src="/image/ilustration.png" layout="fill" alt="" />
           </div>
         </form>
       </main>

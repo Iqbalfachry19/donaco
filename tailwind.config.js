@@ -12,6 +12,7 @@ module.exports = {
       display: ['Oswald'],
       body: ['Arial'],
     },
+
     extend: {},
   },
   plugins: [require('daisyui')],
