@@ -60,7 +60,7 @@ const LogIn: NextPage = () => {
                   <input
                     type="email"
                     placeholder="Type your email..."
-                    className="input input-bordered w-full max-w-xs mt-2"
+                    className="input text-black input-bordered w-full max-w-xs mt-2"
                     {...register('email')}
                   />
                   <ErrorMessage
@@ -74,7 +74,7 @@ const LogIn: NextPage = () => {
                   <input
                     type="password"
                     placeholder="Type your password..."
-                    className="input input-bordered w-full max-w-xs my-2"
+                    className="input text-black input-bordered w-full max-w-xs my-2"
                     {...register('password')}
                   />
                   <ErrorMessage
