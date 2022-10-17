@@ -20,7 +20,7 @@ const dataJenis = [
     title: 'Angin topan',
   },
   {
-    id: '2',
+    id: '3',
     imageUrl: '/image/Longsor.jpg',
     title: 'Longsor',
   },
