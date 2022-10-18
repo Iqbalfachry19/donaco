@@ -3,11 +3,11 @@ import Link from 'next/link';
 
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
-
+import { signOut, useSession } from 'next-auth/react';
 const NovuWrapper = dynamic(() => import('./NovuWrapper'));
 const Header = () => {
   const router = useRouter();
-
+  const { data } = useSession();
   return (
     <header
       className={`${
@@ -36,7 +36,28 @@ const Header = () => {
           <a>About</a>
         </Link>
       </nav>
-      <NovuWrapper />
+      <div className="flex space-x-2 px-2 items-center">
+        <NovuWrapper />
+        {data ? (
+          <p
+            onClick={() => signOut({ callbackUrl: '/' })}
+            className="cursor-pointer"
+          >
+            Log Out
+          </p>
+        ) : (
+          <>
+            <Link href="/log-in">
+              <p className="cursor-pointer">Log In</p>
+            </Link>
+            <Link href="/sign-up">
+              <button className="bg-white py-2 px-2 rounded-xl text-black">
+                Sign Up
+              </button>
+            </Link>
+          </>
+        )}
+      </div>
     </header>
   );
 };
