@@ -2,9 +2,7 @@ import Head from 'next/head';
 
 import Recommendations from '../components/Recommendations';
 
-type Props = {};
-
-const donasi = (props: Props) => {
+const donasi = () => {
   return (
     <div className="font-body">
       <Head>

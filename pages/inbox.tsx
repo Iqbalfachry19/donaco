@@ -1,8 +1,4 @@
-import React from 'react';
-
-type Props = {};
-
-const inbox = (props: Props) => {
+const inbox = () => {
   return <div>inbox</div>;
 };
 

@@ -11,13 +11,15 @@
     "cypress:headless": "cypress run",
     "e2e": "start-server-and-test dev http://localhost:3000 cypress",
     "e2e:headless": "start-server-and-test dev http://localhost:3000 cypress:headless",
-    "test": "jest --watch --verbose --coverage"
+    "test": "jest --watch --verbose --coverage",
+    "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
     "@cypress/code-coverage": "^3.10.0",
     "@heroicons/react": "^2.0.12",
     "@hookform/error-message": "^2.0.0",
     "@hookform/resolvers": "^2.9.8",
+    "@next/bundle-analyzer": "^12.3.1",
     "@novu/node": "^0.8.0",
     "@novu/notification-center": "^0.8.0",
     "@prisma/client": "^4.4.0",
@@ -30,7 +32,7 @@
     "@trpc/server": "^9.27.4",
     "@upstash/qstash": "^0.1.7",
     "argon2": "^0.29.1",
-    "babel-plugin-istanbul": "^6.1.1",
+    "cross-env": "^7.0.3",
     "daisyui": "^2.31.0",
     "ethers": "^5.7.1",
     "next": "12.3.1",
@@ -41,7 +43,6 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.37.0",
     "react-query": "^3.39.2",
-    "react-responsive-carousel": "^3.2.23",
     "react-slick": "^0.29.0",
     "rupiah-format": "^1.0.0",
     "slick-carousel": "^1.8.1",
@@ -50,6 +51,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
+    "babel-plugin-istanbul": "^6.1.1",
     "@types/node": "18.8.1",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
