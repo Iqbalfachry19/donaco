@@ -18,15 +18,15 @@ const Header = () => {
     router.push({ pathname: notification.cta.data?.url });
   }
 
-  async function createTask(req: AddRequest): Promise<void> {
-    const res = await fetch('/api/task/add', {
-      method: 'POST',
-      body: JSON.stringify(req),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-  }
+  // async function createTask(req: AddRequest): Promise<void> {
+  //   const res = await fetch('/api/task/add', {
+  //     method: 'POST',
+  //     body: JSON.stringify(req),
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   });
+  // }
   return (
     <header
       className={`${
