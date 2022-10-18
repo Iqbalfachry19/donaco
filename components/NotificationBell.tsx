@@ -1,7 +1,7 @@
 type Props = {
   unseenCount: number | undefined;
 };
-import { BellIcon } from '@heroicons/react/24/outline';
+
 function NotificationBell({ unseenCount }: Props) {
   return (
     <div>

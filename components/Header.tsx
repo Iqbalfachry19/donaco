@@ -4,9 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 
-const NovuWrapper = dynamic(() => import('./NovuWrapper'), {
-  ssr: false,
-});
+const NovuWrapper = dynamic(() => import('./NovuWrapper'));
 const Header = () => {
   const router = useRouter();
 
