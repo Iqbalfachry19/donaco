@@ -10,10 +10,6 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#fff" />
           <link rel="shortcut icon" href="/image/logo.png" />
           <meta charSet="UTF-8" />
-          <meta
-            http-equiv="Content-Security-Policy"
-            content="script-src 'none'"
-          />
         </Head>
         <body>
           <Main />
