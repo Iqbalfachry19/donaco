@@ -20,7 +20,7 @@ const Header = () => {
     >
       <Link href="/">
         <div className="flex items-center px-2 py-2 space-x-2 ">
-          <div className="w-8 h-8 relative">
+          <div className="w-16 h-16 relative">
             <Image src="/image/logo.png" layout="fill" alt="" />
           </div>
           <h1 className="">Donaco</h1>
