@@ -1,13 +1,14 @@
 // import type { AddRequest } from '../pages/api/task/add';
 
-import NotificationBell from './NotificationBell';
 import {
   NovuProvider,
   PopoverNotificationCenter,
   IMessage,
 } from '@novu/notification-center';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 
+const NotificationBell = dynamic(() => import('./NotificationBell'));
 const NovuWrapper = () => {
   // async function createTask(req: AddRequest): Promise<void> {
   //   const res = await fetch('/api/task/add', {
