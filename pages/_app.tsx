@@ -36,5 +36,4 @@ export default withTRPC<ServerRouter>({
       },
     };
   },
-  ssr: true,
 })(App);
