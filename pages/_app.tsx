@@ -5,8 +5,11 @@ import { withTRPC } from '@trpc/next';
 import { ServerRouter } from '../server/router';
 import { ThirdwebProvider } from '@thirdweb-dev/react';
 import dynamic from 'next/dynamic';
-const SessionProvider = dynamic(() =>
-  import('next-auth/react').then((res) => res.SessionProvider),
+const SessionProvider = dynamic(
+  () => import('next-auth/react').then((res) => res.SessionProvider),
+  {
+    ssr: false,
+  },
 );
 const Layout = dynamic(() => import('../components/layout'));
 const App = ({
