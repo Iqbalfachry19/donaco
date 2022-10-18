@@ -6,7 +6,10 @@ function NotificationBell({ unseenCount }: Props) {
   return (
     <div>
       {unseenCount === 0 ? (
-        <button className="items-center flex relative">
+        <button
+          aria-label="Notification"
+          className="items-center flex relative"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6  text-gray-700"
