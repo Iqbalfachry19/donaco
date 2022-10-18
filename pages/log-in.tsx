@@ -50,7 +50,7 @@ const LogIn: NextPage = () => {
         >
           <div className="w-100 ">
             <div className="card-body">
-              <div className="w-[20rem] h-[20rem]  lg:hidden left-16 relative  rounded-md ">
+              <div className="w-[20rem] h-[20rem]  lg:hidden relative  rounded-md ">
                 <Image src="/image/ilustration.png" layout="fill" alt="" />
               </div>
               <h1 className="text-4xl">Website Donasi Donaco</h1>
