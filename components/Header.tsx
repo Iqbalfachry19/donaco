@@ -1,18 +1,12 @@
 import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
-
-import { IMessage } from '@novu/notification-center';
-import dynamic from 'next/dynamic';
-const NovuProvider = dynamic(() =>
-  import('@novu/notification-center').then((mod) => mod.NovuProvider),
-);
-const PopoverNotificationCenter = dynamic(() =>
-  import('@novu/notification-center').then(
-    (mod) => mod.PopoverNotificationCenter,
-  ),
-);
-const NotificationBell = dynamic(() => import('./NotificationBell'));
+import NotificationBell from './NotificationBell';
+import {
+  NovuProvider,
+  PopoverNotificationCenter,
+  IMessage,
+} from '@novu/notification-center';
 import { useRouter } from 'next/router';
 // import type { AddRequest } from '../pages/api/task/add';
 
