@@ -49,6 +49,9 @@ const SignUp: NextPage = () => {
         >
           <div className=" w-100">
             <div className="card-body">
+              <div className="w-[20rem] h-[20rem]  lg:hidden left-16  relative  rounded-md ">
+                <Image src="/image/ilustration.png" layout="fill" alt="" />
+              </div>
               <h1 className="text-4xl">Website Donasi Donaco</h1>
               <h2 className="text-white text-lg">
                 Selamat datang di layanan donasi Donaco
@@ -117,7 +120,7 @@ const SignUp: NextPage = () => {
               </div>
             </div>
           </div>
-          <div className="w-[30rem] h-[30rem] relative  rounded-md ">
+          <div className="w-[30rem] h-[30rem] hidden lg:flex relative  rounded-md ">
             <Image src="/image/ilustration.png" layout="fill" alt="" />
           </div>
         </form>
