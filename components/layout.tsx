@@ -1,15 +1,20 @@
 import dynamic from 'next/dynamic';
-const Header = dynamic(() => import('./Header'));
-const BottomNav = dynamic(() => import('./BottomNav'));
+import { Suspense } from 'react';
+const Header = dynamic(() => import('./Header'), { suspense: true });
+const BottomNav = dynamic(() => import('./BottomNav'), { suspense: true });
 type Props = {
   children: React.ReactNode;
 };
 export default function Layout({ children }: Props) {
   return (
     <>
-      <Header />
+      <Suspense fallback={null}>
+        <Header />
+      </Suspense>
       <main>{children}</main>
-      <BottomNav />
+      <Suspense fallback={null}>
+        <BottomNav />
+      </Suspense>
     </>
   );
 }
