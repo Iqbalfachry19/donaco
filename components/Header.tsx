@@ -27,7 +27,6 @@ const Header = (props: Props) => {
         'Content-Type': 'application/json',
       },
     });
-    console.log(res);
   }
   return (
     <header

@@ -25,7 +25,6 @@ const SignUp: NextPage = () => {
 
   const onSubmit = useCallback(
     async (data: ISignUp) => {
-      console.log('onSubmit');
       const result = await mutateAsync(data);
       if (result.status === 201) {
         router.push('/log-in');

@@ -1,6 +1,5 @@
 import BottomNav from './BottomNav';
-import dynamic from 'next/dynamic';
-const Header = dynamic(() => import('./Header'));
+import Header from './Header';
 type Props = {
   children: React.ReactNode;
 };
