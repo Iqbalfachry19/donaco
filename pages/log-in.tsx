@@ -41,6 +41,7 @@ const LogIn: NextPage = () => {
         <title>Donaco - Login</title>
         <meta name="description" content="donaco is web for donating" />
         <link rel="icon" href="/favicon.ico" />
+        <meta charset="UTF-8">
       </Head>
 
       <main className="flex text-white">
