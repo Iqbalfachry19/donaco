@@ -7,8 +7,8 @@ type Props = {
 const Hero = ({ title }: Props) => {
   return (
     <div className="flex flex-col lg:flex-row max-w-4xl py-2 mx-auto items-center">
-      <div className="w-[19rem] h-[17rem] relative  lg:hidden">
-        <Image src="/image/hero.png" alt="" priority layout="fill" />
+      <div className="w-80 h-[292px] relative  lg:hidden">
+        <Image src="/image/hero-sm.png" alt="" priority layout="fill" />
       </div>
       <div>
         <h1 className="px-2 text-4xl">{title}</h1>
