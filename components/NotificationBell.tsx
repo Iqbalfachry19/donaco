@@ -27,7 +27,10 @@ function NotificationBell({ unseenCount }: Props) {
           <span className="absolute bottom-2.5 left-2.5 object-right-top -mr-6"></span>
         </button>
       ) : (
-        <button className="items-center flex relative">
+        <button
+          aria-label="Notification"
+          className="items-center flex relative"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6  text-black"

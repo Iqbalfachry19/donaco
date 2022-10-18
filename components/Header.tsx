@@ -4,7 +4,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import { signOut, useSession } from 'next-auth/react';
-const NovuWrapper = dynamic(() => import('./NovuWrapper'));
+const NovuWrapper = dynamic(() => import('./NovuWrapper'), {
+  ssr: false,
+});
 const Header = () => {
   const router = useRouter();
   const { data } = useSession();
