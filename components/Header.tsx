@@ -65,7 +65,10 @@ const Header = (props: Props) => {
             onNotificationClick={onNotificationClick}
           >
             {({ unseenCount }) => (
-              <NotificationBell unseenCount={unseenCount} />
+              <NotificationBell
+                aria-label="notification"
+                unseenCount={unseenCount}
+              />
             )}
           </PopoverNotificationCenter>
         </NovuProvider>
