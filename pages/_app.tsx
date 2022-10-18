@@ -2,10 +2,12 @@ import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { Session } from 'next-auth';
 import { withTRPC } from '@trpc/next';
-import { SessionProvider } from 'next-auth/react';
 import { ServerRouter } from '../server/router';
 import { ThirdwebProvider } from '@thirdweb-dev/react';
 import dynamic from 'next/dynamic';
+const SessionProvider = dynamic(() =>
+  import('next-auth/react').then((res) => res.SessionProvider),
+);
 const Layout = dynamic(() => import('../components/layout'));
 const App = ({
   Component,
