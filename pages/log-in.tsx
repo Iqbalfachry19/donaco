@@ -7,8 +7,12 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useSDK, useAddress, useMetamask } from '@thirdweb-dev/react';
 import { loginSchema, ILogin } from '../common/validation/auth';
-import { ErrorMessage } from '@hookform/error-message';
+
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
+const ErrorMessage = dynamic(() =>
+  import('@hookform/error-message').then((res) => res.ErrorMessage),
+);
 const LogIn: NextPage = () => {
   const sdk = useSDK();
   const address = useAddress();
