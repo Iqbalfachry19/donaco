@@ -1,18 +1,16 @@
 import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
-
+import NotificationBell from './NotificationBell';
 import {
   NovuProvider,
   PopoverNotificationCenter,
-  NotificationBell,
   IMessage,
 } from '@novu/notification-center';
 import { useRouter } from 'next/router';
 import type { AddRequest } from '../pages/api/task/add';
-type Props = {};
 
-const Header = (props: Props) => {
+const Header = () => {
   const { data } = useSession();
   const router = useRouter();
   function onNotificationClick(notification: IMessage) {
