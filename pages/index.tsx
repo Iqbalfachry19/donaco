@@ -21,3 +21,6 @@ const Home = () => {
 };
 
 export default Home;
+export async function getStaticProps(context) {
+  return { props: {} };
+}
