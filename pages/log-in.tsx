@@ -5,30 +5,18 @@ import { useCallback } from 'react';
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useSDK, useAddress, useMetamask } from '@thirdweb-dev/react';
+
 import { loginSchema, ILogin } from '../common/validation/auth';
 
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
+
 const ErrorMessage = dynamic(() =>
   import('@hookform/error-message').then((res) => res.ErrorMessage),
 );
+const LoginWallet = dynamic(() => import('../components/LoginWallet'));
 
 const LogIn: NextPage = () => {
-  const sdk = useSDK();
-  const address = useAddress();
-  const connect = useMetamask();
-  const loginWithWallet = async () => {
-    // Set this to your domain to prevent signature malleability attacks.
-    const domain = 'donaco.vercel.app';
-    const payload = await sdk?.auth.login(domain);
-    // And then we pass it into the next-auth signIn function
-    const signIn = await import('next-auth/react').then((res) => res.signIn);
-    await signIn('credentials', {
-      payload: JSON.stringify(payload),
-      callbackUrl: '/dashboard',
-    });
-  };
   const {
     register,
     handleSubmit,
@@ -101,21 +89,7 @@ const LogIn: NextPage = () => {
                 >
                   Login
                 </button>
-                {address ? (
-                  <button
-                    className="border border-white p-2 text-white rounded-lg"
-                    onClick={loginWithWallet}
-                  >
-                    Login with Wallet
-                  </button>
-                ) : (
-                  <button
-                    className="border border-white p-2 text-white rounded-lg"
-                    onClick={connect}
-                  >
-                    Connect Wallet
-                  </button>
-                )}
+                <LoginWallet />
               </div>
             </div>
           </div>
