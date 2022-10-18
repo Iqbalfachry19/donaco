@@ -13,9 +13,6 @@ import dynamic from 'next/dynamic';
 const ErrorMessage = dynamic(() =>
   import('@hookform/error-message').then((res) => res.ErrorMessage),
 );
-const signIn = dynamic(() =>
-  import('next-auth/react').then((res) => res.signIn),
-);
 
 const LogIn: NextPage = () => {
   const sdk = useSDK();
@@ -26,6 +23,7 @@ const LogIn: NextPage = () => {
     const domain = 'donaco.vercel.app';
     const payload = await sdk?.auth.login(domain);
     // And then we pass it into the next-auth signIn function
+    const signIn = await import('next-auth/react').then((res) => res.signIn);
     await signIn('credentials', {
       payload: JSON.stringify(payload),
       callbackUrl: '/dashboard',
@@ -40,6 +38,7 @@ const LogIn: NextPage = () => {
   });
 
   const onSubmit = useCallback(async (data: ILogin) => {
+    const signIn = await import('next-auth/react').then((res) => res.signIn);
     await signIn('email-password', { ...data, callbackUrl: '/dashboard' });
   }, []);
 
