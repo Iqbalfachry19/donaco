@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 
 import { useCallback } from 'react';
-import { signIn } from 'next-auth/react';
+
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useSDK, useAddress, useMetamask } from '@thirdweb-dev/react';
@@ -13,6 +13,10 @@ import dynamic from 'next/dynamic';
 const ErrorMessage = dynamic(() =>
   import('@hookform/error-message').then((res) => res.ErrorMessage),
 );
+const signIn = dynamic(() =>
+  import('next-auth/react').then((res) => res.signIn),
+);
+
 const LogIn: NextPage = () => {
   const sdk = useSDK();
   const address = useAddress();
