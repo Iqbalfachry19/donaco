@@ -1,8 +1,7 @@
 import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
-const NotificationBell = dynamic(() => import('./NotificationBell'));
+import NotificationBell from './NotificationBell';
 import {
   NovuProvider,
   PopoverNotificationCenter,
