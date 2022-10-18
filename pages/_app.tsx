@@ -1,12 +1,10 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-
+import Layout from '../components/layout';
 import { Session } from 'next-auth';
 import { withTRPC } from '@trpc/next';
 import { SessionProvider } from 'next-auth/react';
 import { ServerRouter } from '../server/router';
-import dynamic from 'next/dynamic';
-const Layout = dynamic(() => import('../components/layout'));
 import { ThirdwebProvider } from '@thirdweb-dev/react';
 const App = ({
   Component,

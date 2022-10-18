@@ -4,9 +4,7 @@ import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Team from '../components/Team';
 
-type Props = {};
-
-const about = (props: Props) => {
+const about = () => {
   return (
     <div className="font-body">
       <Head>

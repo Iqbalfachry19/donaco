@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
+
 import { useCallback } from 'react';
 import { signIn } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
