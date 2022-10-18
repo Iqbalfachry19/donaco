@@ -15,7 +15,6 @@
     "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
-
     "@heroicons/react": "^2.0.12",
     "@hookform/error-message": "^2.0.0",
     "@hookform/resolvers": "^2.9.8",
