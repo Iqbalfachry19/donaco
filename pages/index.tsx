@@ -2,7 +2,6 @@ import Head from 'next/head';
 import ButtonDonasi from '../components/ButtonDonasi';
 
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
 
 const Hero = dynamic(() => import('../components/Hero'), {
   ssr: false,
