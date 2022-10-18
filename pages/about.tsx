@@ -19,8 +19,3 @@ const about = () => {
 };
 
 export default about;
-export async function getStaticProps() {
-  return {
-    props: {},
-  };
-}

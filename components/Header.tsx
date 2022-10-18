@@ -1,31 +1,15 @@
-import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import NotificationBell from './NotificationBell';
-import {
-  NovuProvider,
-  PopoverNotificationCenter,
-  IMessage,
-} from '@novu/notification-center';
+
 import { useRouter } from 'next/router';
-// import type { AddRequest } from '../pages/api/task/add';
+import dynamic from 'next/dynamic';
 
+const NovuWrapper = dynamic(() => import('./NovuWrapper'), {
+  ssr: false,
+});
 const Header = () => {
-  const { data } = useSession();
   const router = useRouter();
-  function onNotificationClick(notification: IMessage) {
-    router.push({ pathname: notification.cta.data?.url });
-  }
 
-  // async function createTask(req: AddRequest): Promise<void> {
-  //   const res = await fetch('/api/task/add', {
-  //     method: 'POST',
-  //     body: JSON.stringify(req),
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   });
-  // }
   return (
     <header
       className={`${
@@ -54,40 +38,7 @@ const Header = () => {
           <a>About</a>
         </Link>
       </nav>
-      <div className="flex space-x-2 px-2 items-center">
-        <NovuProvider
-          subscriberId={'63395cf0ee1316a5c8b25873'}
-          applicationIdentifier={'Kb-zKM23Fwbf'}
-        >
-          <PopoverNotificationCenter
-            colorScheme="light"
-            onNotificationClick={onNotificationClick}
-          >
-            {({ unseenCount }) => (
-              <NotificationBell unseenCount={unseenCount} />
-            )}
-          </PopoverNotificationCenter>
-        </NovuProvider>
-        {data ? (
-          <p
-            onClick={() => signOut({ callbackUrl: '/' })}
-            className="cursor-pointer"
-          >
-            Log Out
-          </p>
-        ) : (
-          <>
-            <Link href="/log-in">
-              <p className="cursor-pointer">Log In</p>
-            </Link>
-            <Link href="/sign-up">
-              <button className="bg-white py-2 px-2 rounded-xl text-black">
-                Sign Up
-              </button>
-            </Link>
-          </>
-        )}
-      </div>
+      <NovuWrapper />
     </header>
   );
 };

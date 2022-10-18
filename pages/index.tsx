@@ -1,11 +1,8 @@
 import Head from 'next/head';
 import ButtonDonasi from '../components/ButtonDonasi';
 
-import dynamic from 'next/dynamic';
+import Hero from '../components/Hero';
 
-const Hero = dynamic(() => import('../components/Hero'), {
-  ssr: false,
-});
 const Home = () => {
   return (
     <div className="font-body w-full">
@@ -17,7 +14,6 @@ const Home = () => {
 
       <main>
         <Hero />
-
         <ButtonDonasi />
       </main>
     </div>
@@ -25,8 +21,3 @@ const Home = () => {
 };
 
 export default Home;
-export async function getStaticProps() {
-  return {
-    props: {},
-  };
-}
