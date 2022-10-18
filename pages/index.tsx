@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 
 const Hero = dynamic(() => import('../components/Hero'), {
-  suspense: true,
+  ssr: false,
 });
 const Home = () => {
   return (
@@ -17,9 +17,7 @@ const Home = () => {
       </Head>
 
       <main>
-        <Suspense fallback={`Loading...`}>
-          <Hero />
-        </Suspense>
+        <Hero />
 
         <ButtonDonasi />
       </main>
@@ -30,6 +28,6 @@ const Home = () => {
 export default Home;
 export async function getStaticProps() {
   return {
-    props: {}, // will be passed to the page component as props
+    props: {},
   };
 }
