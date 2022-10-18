@@ -1,8 +1,9 @@
 import Head from 'next/head';
-import ButtonDonasi from '../components/ButtonDonasi';
+import dynamic from 'next/dynamic';
 
-import Hero from '../components/Hero';
+const Hero = dynamic(() => import('../components/Hero'));
 
+const ButtonDonasi = dynamic(() => import('../components/ButtonDonasi'));
 const Home = () => {
   return (
     <div className="font-body w-full">

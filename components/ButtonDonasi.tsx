@@ -1,9 +1,6 @@
 import Link from 'next/link';
-import React from 'react';
 
-type Props = {};
-
-const ButtonDonasi = (props: Props) => {
+const ButtonDonasi = () => {
   return (
     <div className="flex flex-row max-w-4xl py-2 px-2 mx-auto items-center space-x-2">
       <Link href="/donasi">

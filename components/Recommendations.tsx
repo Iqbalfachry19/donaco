@@ -1,32 +1,12 @@
 import Image from 'next/image';
-import { useRouter } from 'next/router';
-import React from 'react';
+
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Link from 'next/link';
-import { data } from '../data/data';
-type Props = {};
+import { data, dataJenis } from '../data/data';
 
-const dataJenis = [
-  {
-    id: '1',
-    imageUrl: '/image/banjir.jpeg',
-    title: 'Banjir',
-  },
-  {
-    id: '2',
-    imageUrl: '/image/Angin.jpg',
-    title: 'Angin topan',
-  },
-  {
-    id: '3',
-    imageUrl: '/image/Longsor.jpg',
-    title: 'Longsor',
-  },
-];
-const Recommendations = (props: Props) => {
-  const router = useRouter();
+const Recommendations = () => {
   const settings = {
     dots: true,
     infinite: true,

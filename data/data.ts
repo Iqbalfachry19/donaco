@@ -18,3 +18,20 @@ export const data = [
     donationAmount: 4210,
   },
 ];
+export const dataJenis = [
+  {
+    id: '1',
+    imageUrl: '/image/banjir.jpeg',
+    title: 'Banjir',
+  },
+  {
+    id: '2',
+    imageUrl: '/image/Angin.jpg',
+    title: 'Angin topan',
+  },
+  {
+    id: '3',
+    imageUrl: '/image/Longsor.jpg',
+    title: 'Longsor',
+  },
+];

@@ -1,9 +1,6 @@
-import React from 'react';
 import Profile from './Profile';
 
-type Props = {};
-
-const Team = (props: Props) => {
+const Team = () => {
   return (
     <div className="max-w-4xl mx-auto">
       <h1 className="text-center text-4xl">Team</h1>

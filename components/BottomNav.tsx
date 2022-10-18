@@ -6,9 +6,8 @@ import {
   InformationCircleIcon,
 } from '@heroicons/react/24/outline';
 import { useRouter } from 'next/router';
-type Props = {};
 
-const BottomNav = (props: Props) => {
+const BottomNav = () => {
   const router = useRouter();
   return (
     <section
