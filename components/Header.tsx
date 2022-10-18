@@ -37,12 +37,14 @@ const Header = (props: Props) => {
           : 'bg-[#00aeef]'
       } flex items-center text-white justify-between`}
     >
-      <div className="flex items-center px-2 py-2 space-x-2">
-        <div className="w-8 h-8 relative">
-          <Image src="/image/logo.png" layout="fill" alt="" />
+      <Link href="/">
+        <div className="flex items-center px-2 py-2 space-x-2 ">
+          <div className="w-8 h-8 relative">
+            <Image src="/image/logo.png" layout="fill" alt="" />
+          </div>
+          <h1 className="">Donaco</h1>
         </div>
-        <h1 className="">Donaco</h1>
-      </div>
+      </Link>
       <nav className="lg:flex space-x-2 hidden">
         <Link href="/">
           <a>Home</a>
