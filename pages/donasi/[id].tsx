@@ -3,12 +3,15 @@ import Head from 'next/head';
 import Image from 'next/image';
 const convertRupiah = require('rupiah-format');
 import ProgressBar from '../../components/ProgressBar';
-import { GetServerSideProps } from 'next';
 import { data } from '../../data/data';
-import Link from 'next/link';
 import Modal from 'react-modal';
 import { XMarkIcon } from '@heroicons/react/24/outline';
-import { useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { donationSchema, IDonation } from '../../common/validation/donation';
+import { ErrorMessage } from '@hookform/error-message';
+import { FactoryDeploymentSchema } from '@thirdweb-dev/sdk';
 Modal.setAppElement('#__next');
 const customStyles = {
   content: {
@@ -36,7 +39,20 @@ type Query = {
   donationAmount: string;
 };
 const DetailDonasi = (props: Props) => {
-  const [name, setName] = useState('');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IDonation>({
+    resolver: zodResolver(donationSchema),
+  });
+  const onSubmit = useCallback(async (data: IDonation) => {
+    if (data.types === 'crypto') {
+      closeModal();
+    } else {
+    }
+  }, []);
+
   const router = useRouter();
   const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -67,26 +83,46 @@ const DetailDonasi = (props: Props) => {
           <XMarkIcon className="h-6 w-6" />
         </button>
         <div className="text-white">Pilih Jenis Donasi</div>
-        <form className="flex text-white flex-col pt-10">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex text-white flex-col pt-10"
+        >
           <label className="text-white">Jenis Donasi</label>
-          <select className="text-black" id="cars" name="cars">
-            <option value="volvo">Crypto</option>
-            <option value="saab">Gopay</option>
-            <option value="fiat">M-banking</option>
-            <option value="audi">Indomaret</option>
-            <option value="audi">Alfamaret</option>
+          <select
+            {...register('types', {
+              required: 'select one option',
+            })}
+            className="text-black"
+          >
+            <option value="crypto">Crypto</option>
+            <option value="gopay">Gopay</option>
+            <option value="mbanking">M-banking</option>
+            <option value="indomaret">Indomaret</option>
+            <option value="alfamaret">Alfamaret</option>
           </select>
           <label className="text-white">Masukkan Jumlah</label>
           <input
             required
-            onChange={(e) => setName(e.target.value)}
-            value={name}
+            placeholder="Min Rp.20.000"
+            type="number"
+            {...register('amount', {
+              valueAsNumber: true,
+              min: 20000,
+            })}
             className="text-black"
           />
+          <ErrorMessage
+            errors={errors}
+            name="amount"
+            render={({ message }) => <p>{message}</p>}
+          />
+          <button
+            type="submit"
+            className="p-2 mt-10 bg-[#C93555] text-white rounded-md"
+          >
+            Donasi
+          </button>
         </form>
-        <button className="p-2 mt-10 bg-[#C93555] text-white rounded-md">
-          Donasi
-        </button>
       </Modal>
 
       <Head>
@@ -96,7 +132,7 @@ const DetailDonasi = (props: Props) => {
       </Head>
       <div className="max-w-7xl mx-auto p-2">
         <div className="lg:grid-cols-5 lg:grid p-8">
-          <div className="flex flex-col col-span-2 cursor-pointer ">
+          <div className="flex flex-col col-span-2 ">
             <div className="w-full h-80 relative rounded-md  overflow-hidden">
               <Image src={imageUrl} layout="fill" alt="" />
             </div>
@@ -105,7 +141,9 @@ const DetailDonasi = (props: Props) => {
               <p className="text-[#00aeef]">
                 {convertRupiah.convert(currentDonation)}
               </p>
-              <p>terkumpul dari {convertRupiah.convert(maxDonation)}</p>
+              <p className="text-sm lg:text-md flex items-center">
+                terkumpul dari {convertRupiah.convert(maxDonation)}
+              </p>
             </div>
             <ProgressBar
               bgcolor="#00aeef"
