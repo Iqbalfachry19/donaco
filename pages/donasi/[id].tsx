@@ -5,6 +5,26 @@ const convertRupiah = require('rupiah-format');
 import ProgressBar from '../../components/ProgressBar';
 import { GetServerSideProps } from 'next';
 import { data } from '../../data/data';
+import Link from 'next/link';
+import Modal from 'react-modal';
+import { XMarkIcon } from '@heroicons/react/24/outline';
+import { useState } from 'react';
+Modal.setAppElement('#__next');
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    transform: 'translate(-50%, -50%)',
+    backgroundColor: '#0a0b0d',
+    padding: 20,
+    border: 'none',
+  },
+  overlay: {
+    backgroundColor: 'rgba(10, 11, 13, 0.75)',
+  },
+};
 type Props = {};
 
 type Query = {
@@ -16,8 +36,17 @@ type Query = {
   donationAmount: string;
 };
 const DetailDonasi = (props: Props) => {
+  const [name, setName] = useState('');
   const router = useRouter();
+  const [modalIsOpen, setIsOpen] = useState(false);
 
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
   const {
     title,
     imageUrl,
@@ -28,6 +57,38 @@ const DetailDonasi = (props: Props) => {
   } = data.find((data) => data.id === router.query.id) as any;
   return (
     <div className="font-body bg-gray-100 h-full lg:h-[94vh]">
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <button className="text-white" onClick={closeModal}>
+          <XMarkIcon className="h-6 w-6" />
+        </button>
+        <div className="text-white">Pilih Jenis Donasi</div>
+        <form className="flex text-white flex-col pt-10">
+          <label className="text-white">Jenis Donasi</label>
+          <select className="text-black" id="cars" name="cars">
+            <option value="volvo">Crypto</option>
+            <option value="saab">Gopay</option>
+            <option value="fiat">M-banking</option>
+            <option value="audi">Indomaret</option>
+            <option value="audi">Alfamaret</option>
+          </select>
+          <label className="text-white">Masukkan Jumlah</label>
+          <input
+            required
+            onChange={(e) => setName(e.target.value)}
+            value={name}
+            className="text-black"
+          />
+        </form>
+        <button className="p-2 mt-10 bg-[#C93555] text-white rounded-md">
+          Donasi
+        </button>
+      </Modal>
+
       <Head>
         <title>Donaco - {title}</title>
         <meta name="description" content="donaco is web for donating" />
@@ -66,7 +127,11 @@ const DetailDonasi = (props: Props) => {
                 </p>
               </div>
             </div>
-            <button className="p-2 mt-10 bg-[#C93555] text-white rounded-md">
+
+            <button
+              onClick={openModal}
+              className="p-2 mt-10 bg-[#C93555] text-white rounded-md"
+            >
               Donasi Sekarang!
             </button>
           </div>
