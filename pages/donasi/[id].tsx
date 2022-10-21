@@ -39,19 +39,32 @@ type Query = {
   donationAmount: string;
 };
 const DetailDonasi = (props: Props) => {
+  const [isCrypto, setIsCrypto] = useState<boolean>(true);
   const {
     register,
     handleSubmit,
     formState: { errors },
+    resetField,
+    reset,
   } = useForm<IDonation>({
     resolver: zodResolver(donationSchema),
+    defaultValues: {
+      amount: 20000,
+      amountCrypto: 0.01,
+    },
   });
-  const onSubmit = useCallback(async (data: IDonation) => {
-    if (data.types === 'crypto') {
-      closeModal();
-    } else {
-    }
-  }, []);
+  const onSubmit = useCallback(
+    async (data: IDonation) => {
+      if (data.types === 'crypto') {
+        reset();
+        console.log(data);
+        closeModal();
+      } else {
+        closeModal();
+      }
+    },
+    [reset],
+  );
 
   const router = useRouter();
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -91,6 +104,17 @@ const DetailDonasi = (props: Props) => {
           <select
             {...register('types', {
               required: 'select one option',
+              onChange: (e) => {
+                if (e.target.value === 'crypto') {
+                  resetField('amount');
+                  resetField('amountCrypto');
+                  setIsCrypto(true);
+                } else {
+                  resetField('amountCrypto');
+                  resetField('amount');
+                  setIsCrypto(false);
+                }
+              },
             })}
             className="text-black"
           >
@@ -101,21 +125,46 @@ const DetailDonasi = (props: Props) => {
             <option value="alfamaret">Alfamaret</option>
           </select>
           <label className="text-white">Masukkan Jumlah</label>
-          <input
-            required
-            placeholder="Min Rp.20.000"
-            type="number"
-            {...register('amount', {
-              valueAsNumber: true,
-              min: 20000,
-            })}
-            className="text-black"
-          />
-          <ErrorMessage
-            errors={errors}
-            name="amount"
-            render={({ message }) => <p>{message}</p>}
-          />
+
+          {isCrypto ? (
+            <>
+              <input
+                step="any"
+                min="0.01"
+                placeholder="Min 0.01 Matic"
+                type="number"
+                {...register('amountCrypto', {
+                  valueAsNumber: true,
+                  min: 0.01,
+                })}
+                className="text-black"
+              />
+              <ErrorMessage
+                errors={errors}
+                name="amountCrypto"
+                render={({ message }) => <p>{message}</p>}
+              />
+            </>
+          ) : (
+            <>
+              <input
+                min="20000"
+                placeholder="Min Rp.20.000"
+                type="number"
+                {...register('amount', {
+                  valueAsNumber: true,
+                  min: 20000,
+                })}
+                className="text-black"
+              />
+              <ErrorMessage
+                errors={errors}
+                name="amount"
+                render={({ message }) => <p>{message}</p>}
+              />
+            </>
+          )}
+
           <button
             type="submit"
             className="p-2 mt-10 bg-[#C93555] text-white rounded-md"
