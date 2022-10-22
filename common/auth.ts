@@ -1,10 +1,12 @@
 import { NextAuthOptions } from 'next-auth';
-import Credentials from 'next-auth/providers/credentials';
+
 import { verify } from 'argon2';
 
 import { prisma } from './prisma';
 import { loginSchema } from './validation/auth';
 import GoogleProvider from 'next-auth/providers/google';
+import Credentials from 'next-auth/providers/credentials';
+
 export const nextAuthOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
@@ -22,7 +24,8 @@ export const nextAuthOptions: NextAuthOptions = {
         },
         password: { label: 'Password', type: 'password' },
       },
-      authorize: async (credentials, request) => {
+      /* @ts-ignore */
+      authorize: async (credentials, req) => {
         const creds = await loginSchema.parseAsync(credentials);
 
         const user = await prisma.user.findFirst({
