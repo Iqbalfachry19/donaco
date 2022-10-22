@@ -5,17 +5,9 @@ import { withTRPC } from '@trpc/next';
 
 import { ServerRouter } from '../server/router';
 
-import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
-const Layout = dynamic(() => import('../components/layout'), {
-  suspense: true,
-});
-const ThirdwebProvider = dynamic(() =>
-  import('@thirdweb-dev/react').then((res) => res.ThirdwebProvider),
-);
-const SessionProvider = dynamic(() =>
-  import('next-auth/react').then((res) => res.SessionProvider),
-);
+import Layout from '../components/layout';
+import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react';
+import { SessionProvider } from 'next-auth/react';
 const App = ({
   Component,
   pageProps,
@@ -24,12 +16,10 @@ const App = ({
 }>) => {
   return (
     <SessionProvider session={pageProps.session}>
-      <ThirdwebProvider desiredChainId={80001}>
-        <Suspense fallback={null}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </Suspense>
+      <ThirdwebProvider desiredChainId={ChainId.Mumbai}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ThirdwebProvider>
     </SessionProvider>
   );

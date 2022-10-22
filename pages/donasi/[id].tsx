@@ -6,12 +6,12 @@ import ProgressBar from '../../components/ProgressBar';
 import { data } from '../../data/data';
 import Modal from 'react-modal';
 import { XMarkIcon } from '@heroicons/react/24/outline';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { donationSchema, IDonation } from '../../common/validation/donation';
 import { ErrorMessage } from '@hookform/error-message';
-import { FactoryDeploymentSchema } from '@thirdweb-dev/sdk';
+import { useContract, Web3Button } from '@thirdweb-dev/react';
 Modal.setAppElement('#__next');
 const customStyles = {
   content: {
@@ -67,12 +67,24 @@ const DetailDonasi = (props: Props) => {
   );
 
   const router = useRouter();
-  const [modalIsOpen, setIsOpen] = useState(false);
 
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [highestDonation, setHighestDonation] = useState();
   function openModal() {
     setIsOpen(true);
   }
-
+  const { contract } = useContract(
+    '0x8b219E5C6AE9dB8b37e8D60518549Dc611F60914',
+  );
+  useEffect(() => {
+    contract?.events?.addEventListener('HighestDonation', (event) => {
+      setHighestDonation(event?.data?._highestDonation.toString());
+    });
+    return contract?.events?.removeEventListener('HighestDonation', (event) => {
+      console.log(event);
+    });
+  }, [contract?.events]);
+  console.log(highestDonation);
   function closeModal() {
     setIsOpen(false);
   }
@@ -84,6 +96,7 @@ const DetailDonasi = (props: Props) => {
     maxDay,
     donationAmount,
   } = data.find((data) => data.id === router.query.id) as any;
+  const pageTitle = `Donaco - ${title}`;
   return (
     <div className="font-body bg-gray-100 h-full lg:h-[94vh]">
       <Modal
@@ -144,6 +157,18 @@ const DetailDonasi = (props: Props) => {
                 name="amountCrypto"
                 render={({ message }) => <p>{message}</p>}
               />
+
+              <Web3Button
+                contractAddress="0x8b219E5C6AE9dB8b37e8D60518549Dc611F60914"
+                action={(contract) => contract.call('getHighestDonation')}
+                colorMode="dark"
+                accentColor="#ff0000"
+                onSubmit={() => console.log('Submitting')}
+                onSuccess={(result) => console.log('Success', result)}
+                onError={(error) => console.log('Error', error)}
+              >
+                GetHighestDonation
+              </Web3Button>
             </>
           ) : (
             <>
@@ -162,20 +187,20 @@ const DetailDonasi = (props: Props) => {
                 name="amount"
                 render={({ message }) => <p>{message}</p>}
               />
+
+              <button
+                type="submit"
+                className="p-2 mt-10 bg-[#C93555] text-white rounded-md"
+              >
+                Donasi
+              </button>
             </>
           )}
-
-          <button
-            type="submit"
-            className="p-2 mt-10 bg-[#C93555] text-white rounded-md"
-          >
-            Donasi
-          </button>
         </form>
       </Modal>
 
       <Head>
-        <title>Donaco - {title}</title>
+        <title>{pageTitle}</title>
         <meta name="description" content="donaco is web for donating" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

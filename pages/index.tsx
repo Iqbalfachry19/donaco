@@ -1,11 +1,7 @@
 import Head from 'next/head';
 
-import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
-const Hero = dynamic(() => import('../components/Hero'), { suspense: true });
-const ButtonDonasi = dynamic(() => import('../components/ButtonDonasi'), {
-  suspense: true,
-});
+import Hero from '../components/Hero';
+import ButtonDonasi from '../components/ButtonDonasi';
 const Home = () => {
   return (
     <div className="font-body w-full">
@@ -16,12 +12,9 @@ const Home = () => {
       </Head>
 
       <main>
-        <Suspense fallback={null}>
-          <Hero />
-        </Suspense>
-        <Suspense fallback={null}>
-          <ButtonDonasi />
-        </Suspense>
+        <Hero />
+
+        <ButtonDonasi />
       </main>
     </div>
   );
