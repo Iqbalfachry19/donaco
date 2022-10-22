@@ -1,6 +1,8 @@
 import { useSDK, useAddress, useMetamask } from '@thirdweb-dev/react';
-
-const LoginWallet = () => {
+type Props = {
+  isDonating?: boolean;
+};
+const LoginWallet = ({ isDonating }: Props) => {
   const sdk = useSDK();
 
   const address = useAddress();
@@ -13,7 +15,7 @@ const LoginWallet = () => {
     const signIn = await import('next-auth/react').then((res) => res.signIn);
     await signIn('credentials', {
       payload: JSON.stringify(payload),
-      callbackUrl: '/dashboard',
+      callbackUrl: isDonating ? undefined : '/dashboard',
     });
   };
   return (

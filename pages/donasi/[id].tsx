@@ -11,7 +11,9 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { donationSchema, IDonation } from '../../common/validation/donation';
 import { ErrorMessage } from '@hookform/error-message';
-import { useContract, Web3Button } from '@thirdweb-dev/react';
+import { useContract, useContractWrite, Web3Button } from '@thirdweb-dev/react';
+import LoginWallet from '../../components/LoginWallet';
+import { useSession } from 'next-auth/react';
 Modal.setAppElement('#__next');
 const customStyles = {
   content: {
@@ -39,6 +41,7 @@ type Query = {
   donationAmount: string;
 };
 const DetailDonasi = (props: Props) => {
+  const { data: user } = useSession();
   const [isCrypto, setIsCrypto] = useState<boolean>(true);
   const {
     register,
@@ -58,7 +61,6 @@ const DetailDonasi = (props: Props) => {
       if (data.types === 'crypto') {
         reset();
         console.log(data);
-        closeModal();
       } else {
         closeModal();
       }
@@ -70,12 +72,20 @@ const DetailDonasi = (props: Props) => {
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const [highestDonation, setHighestDonation] = useState();
+
   function openModal() {
     setIsOpen(true);
   }
   const { contract } = useContract(
     '0x8b219E5C6AE9dB8b37e8D60518549Dc611F60914',
   );
+  const { mutateAsync: GetHighestDonation, error } = useContractWrite(
+    contract,
+    'getHighestDonation',
+  );
+  async function getHighestDonation() {
+    const tx = await GetHighestDonation([]);
+  }
   useEffect(() => {
     contract?.events?.addEventListener('HighestDonation', (event) => {
       setHighestDonation(event?.data?._highestDonation.toString());
@@ -157,18 +167,17 @@ const DetailDonasi = (props: Props) => {
                 name="amountCrypto"
                 render={({ message }) => <p>{message}</p>}
               />
-
-              <Web3Button
-                contractAddress="0x8b219E5C6AE9dB8b37e8D60518549Dc611F60914"
-                action={(contract) => contract.call('getHighestDonation')}
-                colorMode="dark"
-                accentColor="#ff0000"
-                onSubmit={() => console.log('Submitting')}
-                onSuccess={(result) => console.log('Success', result)}
-                onError={(error) => console.log('Error', error)}
-              >
-                GetHighestDonation
-              </Web3Button>
+              {user ? (
+                <button
+                  type="submit"
+                  onClick={getHighestDonation}
+                  className="p-2 mt-10 bg-[#C93555] text-white rounded-md"
+                >
+                  Donasi
+                </button>
+              ) : (
+                <LoginWallet isDonating />
+              )}
             </>
           ) : (
             <>
