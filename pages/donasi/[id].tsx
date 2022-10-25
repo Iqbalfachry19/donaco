@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 const convertRupiah = require('rupiah-format');
 import ProgressBar from '../../components/ProgressBar';
+import Script from 'next/script';
 import { data } from '../../data/data';
 import Modal from 'react-modal';
 import { XMarkIcon } from '@heroicons/react/24/outline';
@@ -14,6 +15,7 @@ import { ErrorMessage } from '@hookform/error-message';
 import { useContract, useContractWrite, Web3Button } from '@thirdweb-dev/react';
 import LoginWallet from '../../components/LoginWallet';
 import { useSession } from 'next-auth/react';
+import axios from 'axios';
 Modal.setAppElement('#__next');
 const customStyles = {
   content: {
@@ -62,7 +64,32 @@ const DetailDonasi = (props: Props) => {
         reset();
         console.log(data);
       } else {
-        closeModal();
+        let items = [];
+        let total = 20000;
+        const checkoutSession = await axios
+          .post('/api/midtrans', { items, email: user?.user.email, total })
+          .catch((error) => {
+            console.error(error);
+          });
+        console.log(checkoutSession);
+        // SnapToken acquired from previous step
+        snap.pay(checkoutSession?.data.token, {
+          // Optional
+          onClose: function () {
+            /* You may add your own implementation here */
+          },
+          onSuccess: function (result) {
+            console.log('success');
+          },
+          // Optional
+          onPending: function (result) {
+            console.log('pending');
+          },
+          // Optional
+          onError: function (result) {
+            console.log('error');
+          },
+        });
       }
     },
     [reset],
@@ -213,6 +240,11 @@ const DetailDonasi = (props: Props) => {
         <meta name="description" content="donaco is web for donating" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Script
+        src="https://app.sandbox.midtrans.com/snap/snap.js"
+        data-client-key="SB-Mid-client-4YeiDBDfHer6ImFz"
+        defer
+      ></Script>
       <div className="max-w-7xl mx-auto p-2">
         <div className="lg:grid-cols-5 lg:grid p-8">
           <div className="flex flex-col col-span-2 ">
