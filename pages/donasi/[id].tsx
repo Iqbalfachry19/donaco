@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import Image from "next/legacy/image";
+import Image from 'next/image';
 const convertRupiah = require('rupiah-format');
 import ProgressBar from '../../components/ProgressBar';
 import Script from 'next/script';
@@ -58,7 +58,7 @@ const DetailDonasi = (props: Props) => {
       amountCrypto: 0.01,
     },
   });
-  // 
+  //
   const onSubmit = useCallback(
     async (data: IDonation) => {
       if (data.types === 'crypto') {
@@ -250,7 +250,7 @@ const DetailDonasi = (props: Props) => {
         <div className="lg:grid-cols-5 lg:grid p-8">
           <div className="flex flex-col col-span-2 ">
             <div className="w-full h-80 relative rounded-md  overflow-hidden">
-              <Image src={imageUrl} layout="fill" alt="" />
+              <Image src={imageUrl} fill alt="" />
             </div>
             <p className="font-semibold text-2xl">{title}</p>
             <div className="flex space-x-2">
@@ -296,7 +296,7 @@ const DetailDonasi = (props: Props) => {
                 <h2>Penggalang Dana</h2>
                 <div className="flex">
                   <div className="w-20 h-20 relative rounded-md  overflow-hidden">
-                    <Image src="/image/komunitas.png" layout="fill" alt="" />
+                    <Image src="/image/komunitas.png" fill alt="" />
                   </div>
                   <div className="flex flex-col justify-center">
                     <p className="font-semibold text-lg">Komunitas Pelita</p>
