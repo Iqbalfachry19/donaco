@@ -58,6 +58,7 @@ const DetailDonasi = (props: Props) => {
       amountCrypto: 0.01,
     },
   });
+  // 
   const onSubmit = useCallback(
     async (data: IDonation) => {
       if (data.types === 'crypto') {
