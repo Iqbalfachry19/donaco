@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 const convertRupiah = require('rupiah-format');
 import ProgressBar from '../../components/ProgressBar';
 import Script from 'next/script';
