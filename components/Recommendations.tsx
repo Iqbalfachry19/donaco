@@ -1,6 +1,5 @@
-import Image from "next/legacy/image";
+import Image from 'next/image';
 
-import dynamic from 'next/dynamic';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -26,12 +25,11 @@ const Recommendations = () => {
                 pathname: `/donasi/${recommendation.id}`,
               }}
               passHref={true}
+              className="cursor-pointer"
             >
-              <div className="cursor-pointer">
-                <p className="text-center">{recommendation.title}</p>
-                <div className="w-80 h-40 relative mx-auto rounded-md flex justify-center items-center ">
-                  <Image src={recommendation.imageUrl} layout="fill" alt="" />
-                </div>
+              <p className="text-center">{recommendation.title}</p>
+              <div className="w-80 h-40 relative mx-auto rounded-md flex justify-center items-center ">
+                <Image src={recommendation.imageUrl} fill alt="" />
               </div>
             </Link>
           ))}
@@ -42,7 +40,7 @@ const Recommendations = () => {
         {dataJenis.map((recommendation) => (
           <div key={recommendation.id} className="cursor-pointer">
             <div className="w-60 h-24 relative rounded-md overflow-hidden">
-              <Image src={recommendation.imageUrl} layout="fill" alt="" />
+              <Image src={recommendation.imageUrl} fill alt="" />
             </div>
             <p>{recommendation.title}</p>
           </div>

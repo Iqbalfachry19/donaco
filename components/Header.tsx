@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { useRouter } from 'next/router';
@@ -18,25 +18,17 @@ const Header = () => {
           : 'bg-[#00aeef]'
       } flex items-center text-white justify-between`}
     >
-      <Link href="/">
-        <div className="flex items-center px-2 py-2 space-x-2 ">
-          <div className="w-8 h-8 relative">
-            <Image src="/image/logo-sm.png" layout="fill" alt="" />
-          </div>
-          <h1 className="">Donaco</h1>
+      <Link href="/" className="flex items-center px-2 py-2 space-x-2 ">
+        <div className="w-8 h-8 relative">
+          <Image src="/image/logo-sm.png" alt="logo" fill />
         </div>
+        <h1 className="">Donaco</h1>
       </Link>
       <nav className="lg:flex space-x-2 hidden">
-        <Link href="/">
-          <a>Home</a>
-        </Link>
-        <Link href="/donasi">
-          <a>Donasi</a>
-        </Link>
+        <Link href="/">Home</Link>
+        <Link href="/donasi">Donasi</Link>
 
-        <Link href="/about">
-          <a>About</a>
-        </Link>
+        <Link href="/about">About</Link>
       </nav>
       <div className="flex space-x-2 px-2 items-center">
         <NovuWrapper />
@@ -49,13 +41,14 @@ const Header = () => {
           </p>
         ) : (
           <>
-            <Link href="/log-in">
-              <p className="cursor-pointer">Log In</p>
+            <Link href="/log-in" className="cursor-pointer">
+              Log In
             </Link>
-            <Link href="/sign-up">
-              <button className="bg-white py-2 px-2 rounded-xl text-black">
-                Sign Up
-              </button>
+            <Link
+              href="/sign-up"
+              className="bg-white py-2 px-2 rounded-xl text-black"
+            >
+              Sign Up
             </Link>
           </>
         )}

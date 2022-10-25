@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from 'next/image';
 
 type Props = {
   title?: string;
@@ -8,7 +8,7 @@ const Hero = ({ title }: Props) => {
   return (
     <div className="flex flex-col lg:flex-row max-w-4xl py-2 mx-auto items-center">
       <div className="w-80 h-[292px] relative  lg:hidden">
-        <Image src="/image/hero-sm.png" alt="" priority layout="fill" />
+        <Image src="/image/hero-sm.png" alt="" priority fill />
       </div>
       <div>
         <h1 className="px-2 text-4xl">{title}</h1>
@@ -18,7 +18,7 @@ const Hero = ({ title }: Props) => {
         </p>
       </div>
       <div className="w-96 h-52 relative hidden lg:flex">
-        <Image src={'/image/hero.png'} alt="" layout="fill" />
+        <Image src={'/image/hero.png'} alt="" fill />
       </div>
     </div>
   );

@@ -1,10 +1,9 @@
-import React from 'react';
 import { useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import Image from "next/legacy/image";
+import Image from 'next/image';
 import { loginSchema, ILogin } from '../common/validation/auth';
 const ErrorMessage = dynamic(() =>
   import('@hookform/error-message').then((res) => res.ErrorMessage),
@@ -32,7 +31,7 @@ const LoginForm = () => {
       <div className="w-100 ">
         <div className="card-body">
           <div className="w-[20rem] h-[20rem]  lg:hidden relative  rounded-md ">
-            <Image src="/image/ilustration.png" layout="fill" alt="" />
+            <Image src="/image/ilustration.png" fill alt="" />
           </div>
           <h1 className="text-4xl">Website Donasi Donaco</h1>
           <h2 className="text-white text-lg">
@@ -80,7 +79,7 @@ const LoginForm = () => {
         </div>
       </div>
       <div className="w-[30rem] h-[30rem] hidden lg:flex relative  rounded-md ">
-        <Image src="/image/ilustration.png" layout="fill" alt="" />
+        <Image src="/image/ilustration.png" fill alt="" />
       </div>
     </form>
   );

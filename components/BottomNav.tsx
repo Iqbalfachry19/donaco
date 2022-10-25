@@ -19,23 +19,18 @@ const BottomNav = () => {
     >
       <nav className="flex  lg:hidden items-center justify-around">
         <Link href="/">
-          <a>
-            <HomeIcon />
-            Home
-          </a>
+
+          <HomeIcon />Home
         </Link>
 
         <Link href="/donasi">
-          <a>
-            <CurrencyDollarIcon />
-            Donasi
-          </a>
+
+          <CurrencyDollarIcon />Donasi
         </Link>
 
         <Link href="/about">
-          <a>
-            <InformationCircleIcon /> About
-          </a>
+
+          <InformationCircleIcon />About
         </Link>
       </nav>
     </section>
