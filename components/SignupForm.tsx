@@ -1,5 +1,5 @@
 import { ErrorMessage } from '@hookform/error-message';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 

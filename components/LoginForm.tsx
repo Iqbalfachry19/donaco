@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { loginSchema, ILogin } from '../common/validation/auth';
 const ErrorMessage = dynamic(() =>
   import('@hookform/error-message').then((res) => res.ErrorMessage),
