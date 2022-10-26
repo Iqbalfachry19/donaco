@@ -1,7 +1,8 @@
-import { SessionProvider } from 'next-auth/react';
-import '../styles/globals.css';
+import './global.css';
 import BottomNav from './BottomNav';
 import Header from './Header';
+import App from './app';
+
 export default function RootLayout({
   children,
 }: {
@@ -20,9 +21,11 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body>
-        <Header />
-        <main>{children}</main>
-        <BottomNav />
+        <App>
+          <Header />
+          <main>{children}</main>
+          <BottomNav />
+        </App>
       </body>
     </html>
   );

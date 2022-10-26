@@ -1,4 +1,4 @@
-import Header from '../../components/Header';
+import Header from '../../app/Header';
 
 describe('Header.cy.ts', () => {
   it('Header should have title "Donaco"', () => {

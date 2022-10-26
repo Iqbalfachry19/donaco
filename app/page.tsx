@@ -2,6 +2,8 @@ import Head from 'next/head';
 
 import Hero from '../components/Hero';
 import ButtonDonasi from '../components/ButtonDonasi';
+import { usePathname } from 'next/navigation';
+
 const Home = () => {
   return (
     <div className="font-body w-full">
