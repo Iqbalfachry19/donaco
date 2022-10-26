@@ -65,8 +65,9 @@ const DetailDonasi = (props: Props) => {
         reset();
         console.log(data);
       } else {
+        console.log(data);
         let items = [];
-        let total = 20000;
+        let total = data.amount;
         const checkoutSession = await axios
           .post('/api/midtrans', { items, email: user?.user.email, total })
           .catch((error) => {
@@ -79,15 +80,15 @@ const DetailDonasi = (props: Props) => {
           onClose: function () {
             /* You may add your own implementation here */
           },
-          onSuccess: function (result) {
+          onSuccess: function () {
             console.log('success');
           },
           // Optional
-          onPending: function (result) {
+          onPending: function () {
             console.log('pending');
           },
           // Optional
-          onError: function (result) {
+          onError: function () {
             console.log('error');
           },
         });
@@ -204,7 +205,9 @@ const DetailDonasi = (props: Props) => {
                   Donasi
                 </button>
               ) : (
-                <LoginWallet isDonating />
+                <div className="mt-3">
+                  <LoginWallet isDonating />
+                </div>
               )}
             </>
           ) : (
