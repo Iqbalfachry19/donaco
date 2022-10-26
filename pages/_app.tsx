@@ -10,12 +10,12 @@ import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react';
 import { SessionProvider } from 'next-auth/react';
 const App = ({
   Component,
-  pageProps,
+  pageProps: { session, ...pageProps },
 }: AppProps<{
   session: Session;
 }>) => {
   return (
-    <SessionProvider session={pageProps.session}>
+    <SessionProvider session={session}>
       <ThirdwebProvider desiredChainId={ChainId.Mumbai}>
         <Layout>
           <Component {...pageProps} />
