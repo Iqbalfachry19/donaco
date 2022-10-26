@@ -94,7 +94,7 @@ const DetailDonasi = (props: Props) => {
         });
       }
     },
-    [reset],
+    [reset, user?.user.email],
   );
 
   const router = useRouter();
