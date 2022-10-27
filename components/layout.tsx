@@ -1,4 +1,4 @@
-import Header from '../app/Header';
+import Header from './Header';
 import BottomNav from './BottomNav';
 type Props = {
   children: React.ReactNode;
