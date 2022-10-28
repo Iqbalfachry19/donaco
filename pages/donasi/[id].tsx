@@ -196,7 +196,7 @@ const DetailDonasi = (props: Props) => {
                 name="amountCrypto"
                 render={({ message }) => <p>{message}</p>}
               />
-              {user ? (
+              {user?.user?.address ? (
                 <button
                   type="submit"
                   onClick={getHighestDonation}
