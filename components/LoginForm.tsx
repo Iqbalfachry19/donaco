@@ -9,8 +9,10 @@ const ErrorMessage = dynamic(() =>
   import('@hookform/error-message').then((res) => res.ErrorMessage),
 );
 const LoginWallet = dynamic(() => import('../components/LoginWallet'));
-
+import toast, { Toaster } from 'react-hot-toast';
+import { useRouter } from 'next/router';
 const LoginForm = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -19,10 +21,25 @@ const LoginForm = () => {
     resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit = useCallback(async (data: ILogin) => {
-    const signIn = await import('next-auth/react').then((res) => res.signIn);
-    await signIn('email-password', { ...data, callbackUrl: '/dashboard' });
-  }, []);
+  const onSubmit = useCallback(
+    async (data: ILogin) => {
+      const signIn = await import('next-auth/react').then((res) => res.signIn);
+      try {
+        const result = await signIn('email-password', {
+          ...data,
+          redirect: false,
+        });
+        if (result?.ok) {
+          router.push('/dashboard');
+        } else {
+          toast.error('Credentials do not match!');
+        }
+      } catch (err) {
+        toast.error('Something went wrong!');
+      }
+    },
+    [router],
+  );
   return (
     <form
       className="flex items-center justify-center h-screen w-full"
@@ -75,6 +92,7 @@ const LoginForm = () => {
               Login
             </button>
             <LoginWallet />
+            <Toaster />
           </div>
         </div>
       </div>
