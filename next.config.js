@@ -12,7 +12,7 @@ const nextConfig = withPWA({
     ignoreBuildErrors: true,
   },
   experimental: {
-    appDir: true,
+    appDir: false,
   },
 });
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
