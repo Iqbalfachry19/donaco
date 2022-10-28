@@ -9,10 +9,11 @@ import { useRouter } from 'next/router';
 import { trpc } from '../common/client/trpc';
 
 import { signUpSchema, ISignUp } from '../common/validation/auth';
+import toast, { Toaster } from 'react-hot-toast';
 const SignupForm = () => {
   const router = useRouter();
 
-  const { mutateAsync } = trpc.useMutation(['signup']);
+  const { mutateAsync, error } = trpc.useMutation(['signup']);
 
   const {
     register,
@@ -23,12 +24,18 @@ const SignupForm = () => {
   });
   const onSubmit = useCallback(
     async (data: ISignUp) => {
-      const result = await mutateAsync(data);
-      if (result.status === 201) {
-        router.push('/log-in');
+      try {
+        const result = await mutateAsync(data);
+        if (result.status === 201) {
+          toast.success('user created successfully');
+          router.push('/log-in');
+        }
+      } catch (err) {
+        console.log(err);
+        toast.error(`${error?.message}`);
       }
     },
-    [mutateAsync, router],
+    [error?.message, mutateAsync, router],
   );
 
   return (
@@ -106,6 +113,7 @@ const SignupForm = () => {
             >
               Sign Up
             </button>
+            <Toaster />
           </div>
         </div>
       </div>
