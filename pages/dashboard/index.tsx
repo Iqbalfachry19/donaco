@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { useSession, signOut } from 'next-auth/react';
-
+import Head from 'next/head';
 import { requireAuth } from '../../common/requireAuth';
 
 export const getServerSideProps = requireAuth(async (ctx) => {
@@ -11,6 +11,12 @@ const Dashboard: NextPage = () => {
   const { data } = useSession();
 
   return (
+    <Head>
+    <title>Donaco - Dashboard</title>
+    <meta name="description" content="donaco is web for donating" />
+    <link rel="icon" href="/favicon.ico" />
+  </Head>
+
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content">
         <div className="max-w-lg">

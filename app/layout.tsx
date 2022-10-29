@@ -24,7 +24,7 @@ export default function RootLayout({
       <body>
         <App>
           <Header />
-          <main>{children}</main>
+          {children}
           <BottomNav />
         </App>
       </body>

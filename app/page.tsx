@@ -3,11 +3,11 @@ import ButtonDonasi from '../components/ButtonDonasi';
 
 const Home = () => {
   return (
-    <article className="font-body w-full">
+    <main className="font-body w-full">
       <Hero />
 
       <ButtonDonasi />
-    </article>
+    </main>
   );
 };
 
