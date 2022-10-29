@@ -11,13 +11,12 @@ const Dashboard: NextPage = () => {
   const { data } = useSession();
 
   return (
-    <Head>
-    <title>Donaco - Dashboard</title>
-    <meta name="description" content="donaco is web for donating" />
-    <link rel="icon" href="/favicon.ico" />
-  </Head>
-
     <div className="hero min-h-screen bg-base-200">
+      <Head>
+        <title>Donaco - Dashboard</title>
+        <meta name="description" content="donaco is web for donating" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className="hero-content">
         <div className="max-w-lg">
           <h1 className="text-5xl text-center font-bold leading-snug text-gray-400">
