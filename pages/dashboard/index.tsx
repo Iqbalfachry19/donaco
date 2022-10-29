@@ -27,7 +27,7 @@ const Dashboard: NextPage = () => {
             You are allowed to visit this page because you have a session,
             otherwise you would be redirected to the login page.
           </p>
-          <div className="my-4 bg-gray-700 rounded-lg p-4">
+          <div className="my-4 bg-gray-700 rounded-lg p-4 text-white">
             <pre>
               <code>{JSON.stringify(data, null, 2)}</code>
             </pre>
