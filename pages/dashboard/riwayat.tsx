@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { requireAuth } from '../../common/requireAuth';
-import DashboardHome from '../../components/dashboard/DashboardHome';
+
 import DashboardNav from '../../components/dashboard/DashboardNav';
 
 export const getServerSideProps = requireAuth(async (ctx) => {
@@ -12,9 +12,9 @@ export const getServerSideProps = requireAuth(async (ctx) => {
 });
 type Props = {};
 
-const riwayat = (props: Props) => {
+const riwayat: NextPage = (props: Props) => {
   const { data } = useSession();
-  const router = useRouter();
+
   return (
     <div className="grid grid-cols-5 h-screen">
       <Head>

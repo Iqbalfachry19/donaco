@@ -10,9 +10,9 @@ type Props = {};
 export const getServerSideProps = requireAuth(async (ctx) => {
   return { props: {} };
 });
-const tambahData = (props: Props) => {
+const tambahData: NextPage = (props: Props) => {
   const { data } = useSession();
-  const router = useRouter();
+
   return (
     <div className="grid grid-cols-5 h-screen">
       <Head>
