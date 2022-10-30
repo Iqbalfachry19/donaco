@@ -10,7 +10,7 @@ type Props = {};
 export const getServerSideProps = requireAuth(async (ctx) => {
   return { props: {} };
 });
-const tambahData: NextPage = (props: Props) => {
+const TambahData: NextPage = (props: Props) => {
   const { data } = useSession();
 
   return (
@@ -50,4 +50,4 @@ const tambahData: NextPage = (props: Props) => {
   );
 };
 
-export default tambahData;
+export default TambahData;

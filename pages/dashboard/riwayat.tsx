@@ -12,7 +12,7 @@ export const getServerSideProps = requireAuth(async (ctx) => {
 });
 type Props = {};
 
-const riwayat: NextPage = (props: Props) => {
+const Riwayat: NextPage = (props: Props) => {
   const { data } = useSession();
 
   return (
@@ -51,4 +51,4 @@ const riwayat: NextPage = (props: Props) => {
   );
 };
 
-export default riwayat;
+export default Riwayat;

@@ -10,7 +10,7 @@ export const getServerSideProps = requireAuth(async (ctx) => {
 });
 type Props = {};
 
-const profile: NextPage = (props: Props) => {
+const Profile: NextPage = (props: Props) => {
   const { data } = useSession();
 
   return (
@@ -49,4 +49,4 @@ const profile: NextPage = (props: Props) => {
   );
 };
 
-export default profile;
+export default Profile;
