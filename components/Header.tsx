@@ -33,12 +33,20 @@ const Header = () => {
       <div className="flex space-x-2 px-2 items-center">
         <NovuWrapper />
         {data ? (
-          <p
-            onClick={() => signOut({ callbackUrl: '/' })}
-            className="cursor-pointer"
-          >
-            Log Out
-          </p>
+          <>
+            <p
+              className="cursor-pointer"
+              onClick={() => router.push('/dashboard')}
+            >
+              Dashboard
+            </p>
+            <p
+              onClick={() => signOut({ callbackUrl: '/' })}
+              className="cursor-pointer"
+            >
+              Log Out
+            </p>
+          </>
         ) : (
           <>
             <Link href="/log-in" className="cursor-pointer">
