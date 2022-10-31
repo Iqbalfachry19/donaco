@@ -103,7 +103,7 @@ const DetailDonasi = (props: Props) => {
         });
       }
     },
-    [reset, user?.user.email],
+    [imageUrl, reset, user?.user.email],
   );
 
   const router = useRouter();
