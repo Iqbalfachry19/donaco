@@ -24,29 +24,24 @@ export const nextAuthOptions: NextAuthOptions = {
         },
         password: { label: 'Password', type: 'password' },
       },
-      /* @ts-ignore */
       authorize: async (credentials, req) => {
         const creds = await loginSchema.parseAsync(credentials);
 
-        const user = await prisma.user.findFirst({
+        const user: any = await prisma.user.findFirst({
           where: { email: creds.email },
         });
 
-        if (!user) {
-          return null;
+        if (user) {
+          const isValidPassword = await verify(user.password, creds.password);
+          if (isValidPassword) {
+            return {
+              id: user.id,
+              email: user.email,
+              username: user.username,
+            };
+          }
         }
-
-        const isValidPassword = await verify(user.password, creds.password);
-
-        if (!isValidPassword) {
-          return null;
-        }
-
-        return {
-          id: user.id,
-          email: user.email,
-          username: user.username,
-        };
+        return null;
       },
     }),
   ],

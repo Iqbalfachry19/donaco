@@ -2,9 +2,10 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 const midtransClient = require('midtrans-client');
 const { v4: uuidv4 } = require('uuid');
 
+type Data = {};
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<string>,
+  res: NextApiResponse<Data>,
 ) {
   const { items, email, total } = req.body;
   console.log(items);
@@ -14,9 +15,9 @@ export default function handler(
     clientKey: process.env.NEXT_PUBLIC_MIDTRANS_CLIENT_KEY,
   });
 
-  const transformedItemsImage = items.map((item) => item.image);
+  const transformedItemsImage = items.map((item: any) => item.image);
 
-  const transformedItems = items.map((item) => ({
+  const transformedItems = items.map((item: any) => ({
     id: item.id,
     price: item.price,
     quantity: 1,
@@ -44,7 +45,7 @@ export default function handler(
 
   snap
     .createTransaction(parameter)
-    .then((transaction) => {
+    .then((transaction: any) => {
       let transactionToken = transaction.token;
       let redirectUrl = transaction.redirect_url;
       console.log('transactionToken:', transactionToken);
@@ -57,7 +58,7 @@ export default function handler(
         images: transformedItemsImage,
       });
     })
-    .catch((err) => {
+    .catch((err: any) => {
       res.status(400).send(`Error: ${err.message}`);
     });
 }

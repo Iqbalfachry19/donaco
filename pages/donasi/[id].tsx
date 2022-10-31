@@ -66,16 +66,25 @@ const DetailDonasi = (props: Props) => {
         console.log(data);
       } else {
         console.log(data);
-        let items = [];
         let total = data.amount;
+        let items = [
+          {
+            id: 1,
+            price: total,
+            title: 'donasi',
+            category: 'donasi',
+            image: imageUrl,
+          },
+        ];
+
         const checkoutSession = await axios
           .post('/api/midtrans', { items, email: user?.user.email, total })
           .catch((error) => {
             console.error(error);
           });
-        console.log(checkoutSession);
+        console.log('check', checkoutSession);
         // SnapToken acquired from previous step
-        snap.pay(checkoutSession?.data.token, {
+        window.snap.pay(checkoutSession?.data.token, {
           // Optional
           onClose: function () {
             /* You may add your own implementation here */
