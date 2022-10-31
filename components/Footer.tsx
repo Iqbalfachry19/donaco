@@ -4,7 +4,7 @@ type Props = {};
 
 const Footer = (props: Props) => {
   return (
-    <div className="bg-[#00aeef] p-5 text-white text-center">
+    <div className="bg-[#00aeef] p-5 text-white text-center mb-20 lg:mb-0">
       Copyright Donaco | 2022
     </div>
   );
