@@ -73,7 +73,7 @@ const DetailDonasi = (props: Props) => {
             price: total,
             title: 'donasi',
             category: 'donasi',
-            image: imageUrl,
+            image: '/image/banjir.jpeg',
           },
         ];
 
