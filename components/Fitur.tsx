@@ -7,7 +7,7 @@ const Fitur = (props: Props) => {
   return (
     <div className="flex flex-col h-80 bg-gray-200  w-full py-2 px-2 mx-auto items-center space-x-2">
       <h1 className="text-4xl">Fitur</h1>
-      <div className="gap-9 flex mt-6">
+      <div className="gap-9 flex flex-row lg:flex-col mt-6">
         <FiturCard
           name="DONASI ONLINE"
           description="Berdonasi secara online dengan mudah dan aman bisa dilakukan dimana saja"
