@@ -15,12 +15,12 @@ const DashboardNav = (props: Props) => {
           Dashboard
         </Link>
         <Link
-          href="/dashboard/tambah-data"
+          href="/dashboard/data-donasi"
           className={`${
-            router.pathname === '/dashboard/tambah-data' && 'underline'
+            router.pathname === '/dashboard/data-donasi' && 'underline'
           }`}
         >
-          Tambah Data Donasi
+          Data Donasi
         </Link>
         <Link
           href="/dashboard/riwayat"

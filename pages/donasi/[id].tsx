@@ -69,7 +69,7 @@ const DetailDonasi = (props: Props) => {
         let total = data.amount;
         let items = [
           {
-            id: 1,
+            id: 'DONATION1',
             price: total,
             title: 'donasi',
             category: 'donasi',
@@ -103,7 +103,7 @@ const DetailDonasi = (props: Props) => {
         });
       }
     },
-    [imageUrl, reset, user?.user.email],
+    [reset, user?.user.email],
   );
 
   const router = useRouter();

@@ -1,8 +1,7 @@
 import type { NextPage } from 'next';
 import { useSession, signOut } from 'next-auth/react';
 import Head from 'next/head';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+
 import { requireAuth } from '../../common/requireAuth';
 import DashboardNav from '../../components/dashboard/DashboardNav';
 
@@ -10,13 +9,13 @@ type Props = {};
 export const getServerSideProps = requireAuth(async (ctx) => {
   return { props: {} };
 });
-const TambahData: NextPage = (props: Props) => {
+const DataDonasi: NextPage = (props: Props) => {
   const { data } = useSession();
 
   return (
     <div className="grid grid-cols-5 h-screen">
       <Head>
-        <title>Donaco - Tambah Data Donasi</title>
+        <title>Donaco - Data Donasi</title>
         <meta name="description" content="donaco is web for donating" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -25,7 +24,7 @@ const TambahData: NextPage = (props: Props) => {
       <div className=" col-span-4 flex justify-center items-center">
         <div className="max-w-lg ">
           <h1 className="text-5xl text-center font-bold leading-snug text-gray-400">
-            Tambah Data Donasi
+            Data Donasi
           </h1>
           <p className="my-4 text-center leading-loose">
             You are allowed to visit this page because you have a session,
@@ -50,4 +49,4 @@ const TambahData: NextPage = (props: Props) => {
   );
 };
 
-export default TambahData;
+export default DataDonasi;
