@@ -11,6 +11,14 @@ const nextConfig = withPWA({
   experimental: {
     appDir: false,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'avatars.dicebear.com',
+      },
+    ],
+  },
 });
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',

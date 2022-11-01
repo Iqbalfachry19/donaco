@@ -136,6 +136,7 @@ const DetailDonasi = (props: Props) => {
   function closeModal() {
     setIsOpen(false);
   }
+
   const {
     title,
     imageUrl,
@@ -236,10 +237,11 @@ const DetailDonasi = (props: Props) => {
                 name="amount"
                 render={({ message }) => <p>{message}</p>}
               />
-
+              {user?.user.email ? '' : <p>login terlebih dahulu</p>}
               <button
                 type="submit"
-                className="p-2 mt-10 bg-[#C93555] text-white rounded-md"
+                disabled={user?.user.email ? false : true}
+                className="p-2 mt-10 bg-[#C93555] text-white rounded-md disabled:bg-slate-500"
               >
                 Donasi
               </button>

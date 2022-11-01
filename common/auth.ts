@@ -37,7 +37,8 @@ export const nextAuthOptions: NextAuthOptions = {
             return {
               id: user.id,
               email: user.email,
-              username: user.username,
+              name: user.username,
+              admin: user.admin,
             };
           }
         }
@@ -50,6 +51,7 @@ export const nextAuthOptions: NextAuthOptions = {
       if (user) {
         token.id = user.id;
         token.email = user.email;
+        token.admin = user.admin;
       }
 
       return token;
@@ -57,6 +59,7 @@ export const nextAuthOptions: NextAuthOptions = {
     session: async ({ session, token }) => {
       if (token) {
         session.id = token.id;
+        session.admin = token.admin;
       }
 
       return session;
