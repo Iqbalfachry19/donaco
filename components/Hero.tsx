@@ -9,7 +9,7 @@ const Hero = ({ title }: Props) => {
   const [text, count] = useTypewriter({
     words: [
       'dikerjakan oleh 3 orang developer iqbal, wawan dan naufal',
-      'bantuan dana medis',
+      'bantuan modal usaha',
       'bantuan bencana alam',
     ],
     loop: true,
