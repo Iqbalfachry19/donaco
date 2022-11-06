@@ -11,10 +11,10 @@ export const data = [
   {
     id: '2',
     imageUrl: '/image/bantuan.avif',
-    title: 'Banjir di pekanbaru',
+    title: 'Bantu petani kami bangkit',
     maxDonation: 200000000,
-    currentDonation: 61765500,
-    maxDay: 96,
+    currentDonation: 6165500,
+    maxDay: 52,
     donationAmount: 4210,
   },
 ];
