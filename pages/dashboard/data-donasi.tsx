@@ -14,7 +14,7 @@ export const getServerSideProps = requireAuth(async (ctx) => {
 const DataDonasi = (props: Props) => {
   const [selectedImage, setSelectedImage] = useState<any>();
   const [isImagePicked, setIsImagePicked] = useState(false);
-  const [isUploaded, setIsUploaded] = useState(true);
+  const [isUploaded, setIsUploaded] = useState(false);
   const [uri, setUri] = useState<any>();
   const { mutateAsync: upload } = useStorageUpload();
   async function uploadData() {
@@ -29,6 +29,7 @@ const DataDonasi = (props: Props) => {
       const uris = await upload({ data: dataToUpload });
       console.log(uris);
       setUri(uris);
+      setIsUploaded(true);
     };
   }
   const changeImageHandler = (event: any) => {
