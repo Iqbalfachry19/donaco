@@ -41,6 +41,7 @@ type Query = {
   currentDonation: string;
   maxDay: string;
   donationAmount: string;
+  story: string;
 };
 const DetailDonasi = (props: Props) => {
   const { data: user } = useSession();
@@ -144,6 +145,7 @@ const DetailDonasi = (props: Props) => {
     currentDonation,
     maxDay,
     donationAmount,
+    story,
   } = data.find((data) => data.id === router.query.id) as any;
   const pageTitle = `Donaco - ${title}`;
   return (
@@ -321,12 +323,7 @@ const DetailDonasi = (props: Props) => {
             </div>
             <div className="mt-10 bg-white p-2 mb-40">
               <h1 className="font-bold text-lg">Cerita</h1>
-              <p>
-                Beberapa pekan terakhir hujan mengguyur sejumlah wilayah di
-                kabupaten kotawaringin Timur dan Kabupaten Katingan, Kalimantan
-                Tengah. Hujan dengan intensitas tinggi ini menyebabkan banjir di
-                puluhan
-              </p>
+              <p>{story}</p>
             </div>
           </div>
         </div>

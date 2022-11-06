@@ -7,6 +7,8 @@ export const data = [
     currentDonation: 61765500,
     maxDay: 96,
     donationAmount: 4210,
+    story:
+      'Beberapa pekan terakhir hujan mengguyur sejumlah wilayah di kabupaten kotawaringin Timur dan Kabupaten Katingan, Kalimantan Tengah. Hujan dengan intensitas tinggi ini menyebabkan banjir di puluhan',
   },
   {
     id: '2',
@@ -16,6 +18,8 @@ export const data = [
     currentDonation: 6165500,
     maxDay: 52,
     donationAmount: 4210,
+    story:
+      'tujuan penggunaan dana adalah untuk biaya operasional, pembelian dan pengadaan alat dan bahan pertanian yang meliputi : Excavator Mini/Cultivator, Mesin pengompos, Mesin Pompa Irigasi/Mesin Bor Tanah, Alat-alat pertanian, pelatihan peningkatan keterampilan petani, dan lain sebagainya. ',
   },
 ];
 export const dataJenis = [
