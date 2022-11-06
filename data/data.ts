@@ -34,4 +34,9 @@ export const dataJenis = [
     imageUrl: '/image/Longsor.jpg',
     title: 'Longsor',
   },
+  {
+    id: '4',
+    imageUrl: '/image/bantuan.avif',
+    title: 'Bantuan Usaha',
+  },
 ];
