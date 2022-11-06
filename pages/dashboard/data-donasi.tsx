@@ -14,6 +14,7 @@ export const getServerSideProps = requireAuth(async (ctx) => {
 const DataDonasi = (props: Props) => {
   const [selectedImage, setSelectedImage] = useState<any>();
   const [isImagePicked, setIsImagePicked] = useState(false);
+  const [isUploaded, setIsUploaded] = useState(true);
   const [uri, setUri] = useState<any>();
   const { mutateAsync: upload } = useStorageUpload();
   async function uploadData() {
@@ -61,7 +62,7 @@ const DataDonasi = (props: Props) => {
               onChange={changeImageHandler}
               className="text-black"
             />
-            <MediaRenderer src={uri[0]} alt="A mp4 video" />
+            {isUploaded && <MediaRenderer src={uri[0]} alt="A mp4 video" />}
           </div>
           <div className="text-center">
             <button className="btn btn-secondary" onClick={uploadData}>
