@@ -36,7 +36,7 @@ const Recommendations = () => {
         </Slider>
       </div>
       <h1 className="pt-10">Top Penggalangan Dana</h1>
-      <div className="flex space-x-2 justify-between overflow-x-scroll lg:overflow-hidden text-center">
+      <div className="flex space-x-2 justify-between overflow-x-scroll  text-center">
         {dataJenis.map((recommendation) => (
           <div key={recommendation.id} className="cursor-pointer">
             <div className="w-60 h-24 relative rounded-md overflow-hidden">
