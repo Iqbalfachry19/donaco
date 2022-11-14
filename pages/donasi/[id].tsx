@@ -16,6 +16,7 @@ import { useContract, useContractWrite, Web3Button } from '@thirdweb-dev/react';
 import LoginWallet from '../../components/LoginWallet';
 import { useSession } from 'next-auth/react';
 import axios from 'axios';
+import { ethers } from 'ethers';
 Modal.setAppElement('#__next');
 const customStyles = {
   content: {
@@ -60,9 +61,36 @@ const DetailDonasi = (props: Props) => {
     },
   });
   //
+
+  const router = useRouter();
+
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [highestDonation, setHighestDonation] = useState();
+
+  function openModal() {
+    setIsOpen(true);
+  }
+  const { contract } = useContract(
+    '0x4d0917c504b817fc3aBE6b20bBBbEbf7A5B89e19',
+  );
+  const { mutateAsync: Deposit, error } = useContractWrite(contract, 'deposit');
+  const donation = useCallback(
+    async (price: any) => {
+      const tx = await Deposit([
+        0,
+        {
+          value: ethers.utils.parseEther(
+            Number(ethers.utils.formatEther(price)).toString(),
+          ),
+        },
+      ]);
+    },
+    [Deposit],
+  );
   const onSubmit = useCallback(
     async (data: IDonation) => {
       if (data.types === 'crypto') {
+        donation(data.amountCrypto);
         reset();
         console.log(data);
       } else {
@@ -104,27 +132,9 @@ const DetailDonasi = (props: Props) => {
         });
       }
     },
-    [reset, user?.user.email],
+    [donation, reset, user?.user.email],
   );
 
-  const router = useRouter();
-
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const [highestDonation, setHighestDonation] = useState();
-
-  function openModal() {
-    setIsOpen(true);
-  }
-  const { contract } = useContract(
-    '0x8b219E5C6AE9dB8b37e8D60518549Dc611F60914',
-  );
-  const { mutateAsync: GetHighestDonation, error } = useContractWrite(
-    contract,
-    'getHighestDonation',
-  );
-  async function getHighestDonation() {
-    const tx = await GetHighestDonation([]);
-  }
   useEffect(() => {
     contract?.events?.addEventListener('HighestDonation', (event) => {
       setHighestDonation(event?.data?._highestDonation.toString());
@@ -211,7 +221,7 @@ const DetailDonasi = (props: Props) => {
               {user?.user?.address ? (
                 <button
                   type="submit"
-                  onClick={getHighestDonation}
+                  onClick={donation}
                   className="p-2 mt-10 bg-[#C93555] text-white rounded-md"
                 >
                   Donasi
