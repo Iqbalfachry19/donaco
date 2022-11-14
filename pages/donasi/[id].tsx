@@ -75,7 +75,7 @@ const DetailDonasi = (props: Props) => {
   );
   const { mutateAsync: Deposit, error } = useContractWrite(contract, 'deposit');
   const donation = useCallback(
-    async (price: any) => {
+    async (price: number) => {
       const tx = await Deposit([
         0,
         {
@@ -88,9 +88,13 @@ const DetailDonasi = (props: Props) => {
   const onSubmit = useCallback(
     async (data: IDonation) => {
       if (data.types === 'crypto') {
-        donation(data.amountCrypto);
-        reset();
-        console.log(data);
+        try {
+          await donation(data.amountCrypto);
+          console.log(data);
+          setIsOpen(false);
+        } catch (e) {
+          console.log(e);
+        }
       } else {
         console.log(data);
         let total = data.amount;
@@ -130,7 +134,7 @@ const DetailDonasi = (props: Props) => {
         });
       }
     },
-    [donation, reset, user?.user.email],
+    [donation, user?.user.email],
   );
 
   useEffect(() => {
@@ -219,7 +223,6 @@ const DetailDonasi = (props: Props) => {
               {user?.user?.address ? (
                 <button
                   type="submit"
-                  onClick={donation}
                   className="p-2 mt-10 bg-[#C93555] text-white rounded-md"
                 >
                   Donasi
