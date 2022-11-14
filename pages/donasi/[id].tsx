@@ -79,9 +79,7 @@ const DetailDonasi = (props: Props) => {
       const tx = await Deposit([
         0,
         {
-          value: ethers.utils.parseEther(
-            Number(ethers.utils.formatEther(price)).toString(),
-          ),
+          value: ethers.utils.parseEther(price.toString()),
         },
       ]);
     },
