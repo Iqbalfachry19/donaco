@@ -46,23 +46,23 @@ const Riwayat: NextPage = (props: Props) => {
               <p>Jumlah: 20000</p>
             </div>
             <div className="w-2xl bg-primary rounded-lg p-2">
-              <p>Donasi ke #4</p>
+              <p>Donasi ke #5</p>
               <p>Jumlah: 20000</p>
             </div>
             <div className="w-2xl bg-primary rounded-lg p-2">
-              <p>Donasi ke #4</p>
+              <p>Donasi ke #6</p>
               <p>Jumlah: 20000</p>
             </div>
             <div className="w-2xl bg-primary rounded-lg p-2">
-              <p>Donasi ke #4</p>
+              <p>Donasi ke #7</p>
               <p>Jumlah: 20000</p>
             </div>
             <div className="w-2xl bg-primary rounded-lg p-2">
-              <p>Donasi ke #4</p>
+              <p>Donasi ke #8</p>
               <p>Jumlah: 20000</p>
             </div>
             <div className="w-2xl bg-primary rounded-lg p-2">
-              <p>Donasi ke #1</p>
+              <p>Donasi ke #9</p>
               <p>Jumlah: 20000</p>
             </div>
           </div>
