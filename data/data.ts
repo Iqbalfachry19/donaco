@@ -11,7 +11,7 @@ export const data = [
       'Beberapa pekan terakhir hujan mengguyur sejumlah wilayah di kabupaten kotawaringin Timur dan Kabupaten Katingan, Kalimantan Tengah. Hujan dengan intensitas tinggi ini menyebabkan banjir di puluhan',
   },
   {
-    id: '2',
+    id: '3',
     imageUrl: '/image/bantuan.avif',
     title: 'Bantu petani kami bangkit',
     maxDonation: 200000000,

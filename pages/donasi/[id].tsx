@@ -4,7 +4,7 @@ import Image from 'next/image';
 const convertRupiah = require('rupiah-format');
 import ProgressBar from '../../components/ProgressBar';
 import Script from 'next/script';
-import { data } from '../../data/data';
+
 import Modal from 'react-modal';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { useCallback, useEffect, useState } from 'react';
@@ -46,6 +46,7 @@ type Query = {
 };
 const DetailDonasi = (props: Props) => {
   const { data: user } = useSession();
+  const [donasi, setDonasi] = useState<any>({});
   const [isCrypto, setIsCrypto] = useState<boolean>(true);
   const {
     register,
@@ -66,7 +67,14 @@ const DetailDonasi = (props: Props) => {
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const [highestDonation, setHighestDonation] = useState();
+  useEffect(() => {
+    const getRecommended = async () => {
+      const res = await axios.get(`/api/donation/get/${router.query.id}`);
 
+      setDonasi(res.data.user);
+    };
+    getRecommended();
+  }, [router.query.id]);
   function openModal() {
     setIsOpen(true);
   }
@@ -120,7 +128,13 @@ const DetailDonasi = (props: Props) => {
           onClose: function () {
             /* You may add your own implementation here */
           },
-          onSuccess: function () {
+          onSuccess: async function () {
+            await axios.post(`/api/donation/update/${router.query.id}`, {
+              currentDonation:
+                Number(donasi.currentDonation) + Number(data.amount),
+              donationAmount: Number(donasi.donationAmount) + 1,
+            });
+            router.reload();
             console.log('success');
           },
           // Optional
@@ -158,7 +172,7 @@ const DetailDonasi = (props: Props) => {
     maxDay,
     donationAmount,
     story,
-  } = data.find((data) => data.id === router.query.id) as any;
+  } = donasi;
   const pageTitle = `Donaco - ${title}`;
   return (
     <div className="font-body bg-gray-100 h-full lg:h-[94vh]">

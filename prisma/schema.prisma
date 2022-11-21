@@ -37,3 +37,4 @@ model Fundraiser{
    donation Donation?
    name String 
 }
+ 
