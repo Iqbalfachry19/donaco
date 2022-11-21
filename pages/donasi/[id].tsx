@@ -94,7 +94,7 @@ const DetailDonasi = (props: Props) => {
     [Deposit],
   );
   const onSubmit = useCallback(
-    async (data: IDonation) => {
+    async (data: IDonation, donasi: any) => {
       if (data.types === 'crypto') {
         try {
           await donation(data.amountCrypto);
@@ -187,7 +187,7 @@ const DetailDonasi = (props: Props) => {
         </button>
         <div className="text-white">Pilih Jenis Donasi</div>
         <form
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSubmit((data) => onSubmit(data, donasi))}
           className="flex text-white flex-col pt-10"
         >
           <label className="text-white">Jenis Donasi</label>
