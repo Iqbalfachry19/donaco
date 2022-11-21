@@ -12,6 +12,7 @@ export const getServerSideProps = requireAuth(async (ctx) => {
   return { props: {} };
 });
 const DataDonasi = (props: Props) => {
+  const { data } = useSession();
   const [selectedImage, setSelectedImage] = useState<any>();
   const [isImagePicked, setIsImagePicked] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
@@ -36,6 +37,7 @@ const DataDonasi = (props: Props) => {
     setSelectedImage(event.target.files[0]);
     setIsImagePicked(true);
   };
+  if (!data?.admin) return;
   return (
     <div className="grid grid-cols-5 h-screen">
       <Head>
@@ -51,8 +53,7 @@ const DataDonasi = (props: Props) => {
             Data Donasi
           </h1>
           <p className="my-4 text-center leading-loose">
-            You are allowed to visit this page because you have a session,
-            otherwise you would be redirected to the login page.
+            kamu adalah admin bisa mengakses data donasi
           </p>
           <div className="my-4 bg-gray-700 rounded-lg p-4 text-white">
             <input

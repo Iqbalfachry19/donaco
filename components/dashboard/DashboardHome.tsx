@@ -20,7 +20,7 @@ function DashboardHome({}: Props) {
             )}`}{' '}
           {data?.admin ? 'you are admin' : ''}
         </h1>
-        <div className="flex space-x-2">
+        <div className="flex space-x-2 justify-center">
           <div>
             <div className="my-4 flex-col bg-gray-700 rounded-lg p-4 h-40 w-40 items-center justify-center text-white">
               <p className="my-4 text-center leading-loose">Total Donasi</p>

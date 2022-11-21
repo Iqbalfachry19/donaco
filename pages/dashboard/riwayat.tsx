@@ -28,22 +28,43 @@ const Riwayat: NextPage = (props: Props) => {
           <h1 className="text-5xl text-center font-bold leading-snug text-gray-400">
             Riwayat Donasi
           </h1>
-          <p className="my-4 text-center leading-loose">
-            You are allowed to visit this page because you have a session,
-            otherwise you would be redirected to the login page.
-          </p>
-          <div className="my-4 bg-gray-700 rounded-lg p-4 text-white">
-            <pre>
-              <code>{JSON.stringify(data, null, 2)}</code>
-            </pre>
-          </div>
-          <div className="text-center">
-            <button
-              className="btn btn-secondary"
-              onClick={() => signOut({ callbackUrl: '/' })}
-            >
-              Logout
-            </button>
+          <div className="space-y-2 overflow-y-scroll h-40">
+            <div className="w-2xl bg-primary rounded-lg p-2">
+              <p>Donasi ke #1</p>
+              <p>Jumlah: 20000</p>
+            </div>
+            <div className="w-2xl bg-primary rounded-lg p-2">
+              <p>Donasi ke #2</p>
+              <p>Jumlah: 20000</p>
+            </div>
+            <div className="w-2xl bg-primary rounded-lg p-2">
+              <p>Donasi ke #3</p>
+              <p>Jumlah: 20000</p>
+            </div>
+            <div className="w-2xl bg-primary rounded-lg p-2">
+              <p>Donasi ke #4</p>
+              <p>Jumlah: 20000</p>
+            </div>
+            <div className="w-2xl bg-primary rounded-lg p-2">
+              <p>Donasi ke #4</p>
+              <p>Jumlah: 20000</p>
+            </div>
+            <div className="w-2xl bg-primary rounded-lg p-2">
+              <p>Donasi ke #4</p>
+              <p>Jumlah: 20000</p>
+            </div>
+            <div className="w-2xl bg-primary rounded-lg p-2">
+              <p>Donasi ke #4</p>
+              <p>Jumlah: 20000</p>
+            </div>
+            <div className="w-2xl bg-primary rounded-lg p-2">
+              <p>Donasi ke #4</p>
+              <p>Jumlah: 20000</p>
+            </div>
+            <div className="w-2xl bg-primary rounded-lg p-2">
+              <p>Donasi ke #1</p>
+              <p>Jumlah: 20000</p>
+            </div>
           </div>
         </div>
       </div>

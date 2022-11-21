@@ -22,12 +22,7 @@ const DashboardNav = (props: Props) => {
             />
           </div>
 
-          <p>{`${
-            data?.user?.name || data?.user?.address?.substring(0, 4)
-          }...${data?.user?.address?.substring(
-            38,
-            data?.user?.address?.length,
-          )}`}</p>
+          <p>{`${data?.user?.name}`}</p>
         </div>
         <Link
           href="/dashboard"
@@ -50,14 +45,6 @@ const DashboardNav = (props: Props) => {
           }`}
         >
           Riwayat Donasi
-        </Link>
-        <Link
-          href="/dashboard/profile"
-          className={`${
-            router.pathname === '/dashboard/profile' && 'underline'
-          }`}
-        >
-          Setting Profile
         </Link>
       </nav>
     </div>
