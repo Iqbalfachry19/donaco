@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { requireAuth } from '../../common/requireAuth';
 
 import DashboardNav from '../../components/dashboard/DashboardNav';
-
+import DonationHistory from '../../components/DonationHistory';
 export const getServerSideProps = requireAuth(async (ctx) => {
   return { props: {} };
 });
@@ -29,42 +29,10 @@ const Riwayat: NextPage = (props: Props) => {
             Riwayat Donasi
           </h1>
           <div className="space-y-2 overflow-y-scroll h-40">
-            <div className="w-2xl bg-primary rounded-lg p-2">
-              <p>Donasi ke #1</p>
-              <p>Jumlah: 20000</p>
-            </div>
-            <div className="w-2xl bg-primary rounded-lg p-2">
-              <p>Donasi ke #2</p>
-              <p>Jumlah: 20000</p>
-            </div>
-            <div className="w-2xl bg-primary rounded-lg p-2">
-              <p>Donasi ke #3</p>
-              <p>Jumlah: 20000</p>
-            </div>
-            <div className="w-2xl bg-primary rounded-lg p-2">
-              <p>Donasi ke #4</p>
-              <p>Jumlah: 20000</p>
-            </div>
-            <div className="w-2xl bg-primary rounded-lg p-2">
-              <p>Donasi ke #5</p>
-              <p>Jumlah: 20000</p>
-            </div>
-            <div className="w-2xl bg-primary rounded-lg p-2">
-              <p>Donasi ke #6</p>
-              <p>Jumlah: 20000</p>
-            </div>
-            <div className="w-2xl bg-primary rounded-lg p-2">
-              <p>Donasi ke #7</p>
-              <p>Jumlah: 20000</p>
-            </div>
-            <div className="w-2xl bg-primary rounded-lg p-2">
-              <p>Donasi ke #8</p>
-              <p>Jumlah: 20000</p>
-            </div>
-            <div className="w-2xl bg-primary rounded-lg p-2">
-              <p>Donasi ke #9</p>
-              <p>Jumlah: 20000</p>
-            </div>
+            <DonationHistory counter={1} amount={20000} />
+            <DonationHistory counter={2} amount={30000} />
+            <DonationHistory counter={3} amount={40000} />
+            <DonationHistory counter={4} amount={50000} />
           </div>
         </div>
       </div>
