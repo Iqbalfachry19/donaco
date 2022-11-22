@@ -7,8 +7,8 @@ export default async function handler(
 ) {
   const user = await prisma.transaction.create({
     data: {
-      currentDonation: Number(req.body.currentDonation),
-      donationAmount: Number(req.body.donationAmount),
+      userId: Number(req.body.userId),
+      amount: Number(req.body.amount),
     },
   });
 

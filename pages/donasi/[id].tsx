@@ -139,6 +139,10 @@ const DetailDonasi = (props: Props) => {
                 Number(donasi.currentDonation) + Number(data.amount),
               donationAmount: Number(donasi.donationAmount) + 1,
             });
+            await axios.post(`/api/donation/transaction/create`, {
+              userId: Number(user?.id),
+              amount: Number(data.amount),
+            });
             mutate(`/api/donation/get/${router.query.id}`);
             console.log('success');
           },
