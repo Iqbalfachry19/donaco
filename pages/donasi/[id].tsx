@@ -59,7 +59,6 @@ const DetailDonasi = (props: Props) => {
     error: errorData,
     mutate,
   } = useSWR(`/api/donation/get/${router.query.id}`, fetcher);
-  console.log('datac', donasi);
 
   const [isCrypto, setIsCrypto] = useState<boolean>(true);
   const {

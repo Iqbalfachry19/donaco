@@ -2,6 +2,9 @@
   "name": "donaco",
   "version": "0.1.0",
   "private": true,
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -77,6 +80,7 @@
     "postcss": "^8.4.17",
     "start-server-and-test": "^1.14.0",
     "tailwindcss": "^3.1.8",
+    "ts-node": "^10.9.1",
     "typescript": "4.8.4"
   },
   "packageManager": "yarn@3.2.4"

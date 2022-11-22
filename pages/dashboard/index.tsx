@@ -13,7 +13,7 @@ export const getServerSideProps = requireAuth(async (ctx) => {
 
 const Dashboard: NextPage = () => {
   const { data } = useSession();
-  const router = useRouter();
+
   return (
     <div className="grid grid-cols-5 h-screen">
       <Head>

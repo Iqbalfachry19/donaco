@@ -30,14 +30,16 @@ const DashboardNav = (props: Props) => {
         >
           Dashboard
         </Link>
-        <Link
-          href="/dashboard/data-donasi"
-          className={`${
-            router.pathname === '/dashboard/data-donasi' && 'underline'
-          }`}
-        >
-          Data Donasi
-        </Link>
+        {data?.admin && (
+          <Link
+            href="/dashboard/data-donasi"
+            className={`${
+              router.pathname === '/dashboard/data-donasi' && 'underline'
+            }`}
+          >
+            Data Donasi
+          </Link>
+        )}
         <Link
           href="/dashboard/riwayat"
           className={`${

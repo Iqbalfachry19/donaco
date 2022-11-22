@@ -1,11 +1,21 @@
 import { useSession, signOut } from 'next-auth/react';
 import { useRouter } from 'next/router';
-
+import axios from 'axios';
+import useSWR from 'swr';
 type Props = {};
 
 function DashboardHome({}: Props) {
   const { data } = useSession();
-  console.log(data);
+  const fetcher = async (url: string) => {
+    return await axios.get(url).then((res) => res.data.donation);
+  };
+
+  const {
+    data: donasi,
+    error: errorData,
+    mutate,
+  } = useSWR(`/api/donation/transaction/get/${data?.id}`, fetcher);
+  console.log(donasi);
   return (
     <div className=" col-span-4 flex justify-center items-center">
       <div className="max-w-lg ">
@@ -24,13 +34,19 @@ function DashboardHome({}: Props) {
           <div>
             <div className="my-4 flex-col bg-gray-700 rounded-lg p-4 h-40 w-40 items-center justify-center text-white">
               <p className="my-4 text-center leading-loose">Total Donasi</p>
-              <p className="text-center">0</p>
+              <p className="text-center">
+                {donasi?.aggregations._sum.amount
+                  ? donasi?.aggregations._sum.amount
+                  : 0}
+              </p>
             </div>
           </div>
           <div>
             <div className="my-4 flex-col bg-gray-700 rounded-lg p-4 h-40 w-40 items-center justify-center text-white">
-              <p className="my-4 text-center leading-loose">Donasi Tertinggi</p>
-              <p className="text-center">0</p>
+              <p className="my-4 text-center leading-loose">Jumlah Donasi</p>
+              <p className="text-center">
+                {donasi?.donationCount ? donasi?.donationCount : 0}
+              </p>
             </div>
           </div>
         </div>
