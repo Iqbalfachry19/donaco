@@ -17,6 +17,8 @@ import LoginWallet from '../../components/LoginWallet';
 import { useSession } from 'next-auth/react';
 import axios from 'axios';
 import { ethers } from 'ethers';
+import useSWR, { useSWRConfig } from 'swr';
+
 Modal.setAppElement('#__next');
 const customStyles = {
   content: {
@@ -46,7 +48,19 @@ type Query = {
 };
 const DetailDonasi = (props: Props) => {
   const { data: user } = useSession();
-  const [donasi, setDonasi] = useState<any>({});
+  const router = useRouter();
+
+  const fetcher = async (url: string) => {
+    return await axios.get(url).then((res) => res.data.user);
+  };
+
+  const {
+    data: donasi,
+    error: errorData,
+    mutate,
+  } = useSWR(`/api/donation/get/${router.query.id}`, fetcher);
+  console.log('datac', donasi);
+
   const [isCrypto, setIsCrypto] = useState<boolean>(true);
   const {
     register,
@@ -63,18 +77,9 @@ const DetailDonasi = (props: Props) => {
   });
   //
 
-  const router = useRouter();
-
   const [modalIsOpen, setIsOpen] = useState(false);
   const [highestDonation, setHighestDonation] = useState();
-  useEffect(() => {
-    const getRecommended = async () => {
-      const res = await axios.get(`/api/donation/get/${router.query.id}`);
 
-      setDonasi(res.data.user);
-    };
-    getRecommended();
-  }, [router.query.id]);
   function openModal() {
     setIsOpen(true);
   }
@@ -134,7 +139,7 @@ const DetailDonasi = (props: Props) => {
                 Number(donasi.currentDonation) + Number(data.amount),
               donationAmount: Number(donasi.donationAmount) + 1,
             });
-            router.reload();
+            mutate(`/api/donation/get/${router.query.id}`);
             console.log('success');
           },
           // Optional
@@ -164,16 +169,7 @@ const DetailDonasi = (props: Props) => {
     setIsOpen(false);
   }
 
-  const {
-    title,
-    imageUrl,
-    maxDonation,
-    currentDonation,
-    maxDay,
-    donationAmount,
-    story,
-  } = donasi;
-  const pageTitle = `Donaco - ${title}`;
+  const pageTitle = `Donaco - ${donasi?.title}`;
   return (
     <div className="font-body bg-gray-100 h-full lg:h-[94vh]">
       <Modal
@@ -291,21 +287,22 @@ const DetailDonasi = (props: Props) => {
         <div className="lg:grid-cols-5 lg:grid p-8">
           <div className="flex flex-col col-span-2 ">
             <div className="w-full h-80 relative rounded-md  overflow-hidden">
-              <Image src={imageUrl} fill alt="" />
+              <Image src={donasi?.imageUrl} fill alt="" />
             </div>
-            <p className="font-semibold text-2xl">{title}</p>
+            <p className="font-semibold text-2xl">{donasi?.title}</p>
             <div className="flex space-x-2">
               <p className="text-[#00aeef]">
-                {convertRupiah.convert(currentDonation)}
+                {convertRupiah.convert(donasi?.currentDonation)}
               </p>
               <p className="text-sm lg:text-md flex items-center">
-                terkumpul dari {convertRupiah.convert(maxDonation)}
+                terkumpul dari {convertRupiah.convert(donasi?.maxDonation)}
               </p>
             </div>
             <ProgressBar
               bgcolor="#00aeef"
               progress={(
-                (Number(currentDonation) / Number(maxDonation)) *
+                (Number(donasi?.currentDonation) /
+                  Number(donasi?.maxDonation)) *
                 100
               ).toString()}
               height={30}
@@ -313,12 +310,13 @@ const DetailDonasi = (props: Props) => {
             <div className="flex ">
               <div className="grow">
                 <p>
-                  <span className="font-bold">{donationAmount}</span> Donasi
+                  <span className="font-bold">{donasi?.donationAmount}</span>{' '}
+                  Donasi
                 </p>
               </div>
               <div className="grow-none">
                 <p>
-                  <span className="font-bold">{maxDay}</span> Hari lagi
+                  <span className="font-bold">{donasi?.maxDay}</span> Hari lagi
                 </p>
               </div>
             </div>
@@ -348,7 +346,7 @@ const DetailDonasi = (props: Props) => {
             </div>
             <div className="mt-10 bg-white p-2 mb-40">
               <h1 className="font-bold text-lg">Cerita</h1>
-              <p>{story}</p>
+              <p>{donasi?.story}</p>
             </div>
           </div>
         </div>
