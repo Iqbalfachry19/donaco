@@ -4,7 +4,7 @@ import axios from 'axios';
 import useSWR from 'swr';
 type Props = {};
 
-function DashboardHome({}: Props) {
+function DashboardHome(props: Props) {
   const { data } = useSession();
   const fetcher = async (url: string) => {
     return await axios.get(url).then((res) => res.data.donation);
