@@ -9,8 +9,8 @@ const DashboardNav = (props: Props) => {
   const router = useRouter();
   const { data } = useSession();
   return (
-    <div className="col-span-1 text-white ">
-      <nav className="bg-gray-700  flex flex-row lg:flex-col w-screen items-center lg:items-start space-x-2 lg:w-1/2 lg:h-screen px-2 lg:space-y-2">
+    <div className="col-span-5 lg:col-span-1 flex w-screen lg:w-80  h-fit text-white ">
+      <nav className="bg-gray-700  flex flex-row lg:flex-col  w-screen items-center lg:items-start space-x-2 lg:w-1/2 lg:h-screen px-2 lg:space-y-2">
         <div className="flex items-center space-x-2 py-2">
           <div className="h-10 w-10 relative">
             <Image

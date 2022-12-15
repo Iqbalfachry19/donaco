@@ -17,8 +17,8 @@ function DashboardHome(props: Props) {
   } = useSWR(`/api/donation/transaction/get/${data?.id}`, fetcher);
   console.log(donasi);
   return (
-    <div className=" col-span-4 flex justify-center items-center">
-      <div className="max-w-lg ">
+    <div className=" col-span-5 lg:col-span-4 flex justify-center items-center">
+      <div className="max-w-lg -mt-80 ">
         <h1 className="text-5xl text-center font-bold leading-snug text-gray-400">
           Welcome{' '}
           {data?.user?.name ||

@@ -32,8 +32,8 @@ const Riwayat: NextPage = (props: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <DashboardNav />
-      <div className=" col-span-4 flex justify-center items-center">
-        <div className="max-w-lg ">
+      <div className=" lg:col-span-4 col-span-5 flex justify-center items-center">
+        <div className="max-w-lg -mt-80 ">
           <h1 className="text-5xl text-center font-bold leading-snug text-gray-400">
             Riwayat Donasi
           </h1>
