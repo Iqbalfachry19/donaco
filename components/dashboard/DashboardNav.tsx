@@ -10,7 +10,7 @@ const DashboardNav = (props: Props) => {
   const { data } = useSession();
   return (
     <div className="col-span-1 text-white ">
-      <nav className="bg-gray-700  flex flex-col h-screen px-2 space-y-2">
+      <nav className="bg-gray-700  flex flex-row lg:flex-col h-screen px-2 space-y-2">
         <div className="flex items-center space-x-2 py-2">
           <div className="h-10 w-10 relative">
             <Image
