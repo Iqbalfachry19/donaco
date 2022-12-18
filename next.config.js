@@ -9,7 +9,7 @@ const nextConfig = withPWA({
   reactStrictMode: true,
   swcMinify: true,
   experimental: {
-    appDir: true,
+    appDir: false,
   },
   images: {
     remotePatterns: [
