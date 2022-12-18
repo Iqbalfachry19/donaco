@@ -2,7 +2,7 @@ import './global.css';
 import BottomNav from './BottomNav';
 
 import App from './app';
-import Header from '../components/Header';
+import Header from './Header';
 
 export default function RootLayout({
   children,
