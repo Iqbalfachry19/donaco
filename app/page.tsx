@@ -1,5 +1,7 @@
 import Hero from '../components/Hero';
 import ButtonDonasi from '../components/ButtonDonasi';
+import Fitur from '../components/Fitur';
+import Footer from '../components/Footer';
 
 const Home = () => {
   return (
@@ -7,6 +9,8 @@ const Home = () => {
       <Hero />
 
       <ButtonDonasi />
+      <Fitur />
+      <Footer />
     </main>
   );
 };

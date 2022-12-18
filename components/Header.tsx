@@ -1,7 +1,8 @@
+'use client';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { useRouter } from 'next/router';
+import { useRouter, usePathname } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import { signOut, useSession } from 'next-auth/react';
 const NovuWrapper = dynamic(() => import('./NovuWrapper'), {
@@ -9,11 +10,12 @@ const NovuWrapper = dynamic(() => import('./NovuWrapper'), {
 });
 const Header = () => {
   const router = useRouter();
+  const pathname = usePathname();
   const { data } = useSession();
   return (
     <header
       className={`${
-        router.pathname === '/log-in' || router.pathname === '/sign-up'
+        pathname === '/log-in' || pathname === '/sign-up'
           ? 'bg-transparent fixed top-0 left-0 right-0'
           : 'bg-[#00aeef]'
       } flex items-center text-white justify-between`}
