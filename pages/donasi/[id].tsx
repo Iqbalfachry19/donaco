@@ -283,7 +283,7 @@ const DetailDonasi = (props: Props) => {
       </Head>
       <Script
         src="https://app.sandbox.midtrans.com/snap/snap.js"
-        data-client-key="SB-Mid-client-4YeiDBDfHer6ImFz"
+        data-client-key={process.env.NEXT_PUBLIC_MIDTRANS_CLIENT_KEY}
         defer
       ></Script>
       <div className="max-w-7xl mx-auto p-2">
@@ -301,15 +301,27 @@ const DetailDonasi = (props: Props) => {
                 terkumpul dari {convertRupiah.convert(donasi?.maxDonation)}
               </p>
             </div>
-            <ProgressBar
-              bgcolor="#00aeef"
-              progress={(
-                (Number(donasi?.currentDonation) /
-                  Number(donasi?.maxDonation)) *
-                100
-              ).toString()}
-              height={30}
-            />
+            {Number(donasi?.currentDonation) > Number(donasi?.maxDonation) ? (
+              <ProgressBar
+                bgcolor="#00aeef"
+                progress={(
+                  (Number(donasi?.maxDonation) / Number(donasi?.maxDonation)) *
+                  100
+                ).toString()}
+                height={30}
+              />
+            ) : (
+              <ProgressBar
+                bgcolor="#00aeef"
+                progress={(
+                  (Number(donasi?.currentDonation) /
+                    Number(donasi?.maxDonation)) *
+                  100
+                ).toString()}
+                height={30}
+              />
+            )}
+
             <div className="flex ">
               <div className="grow">
                 <p>
